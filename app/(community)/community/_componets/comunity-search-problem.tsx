@@ -3,6 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Search, Send } from "lucide-react";
 import React from "react";
 import { searchProblemInCommunity } from "@/actions/community/search-problem-in-community";
+import { Button } from "@/components/ui/button";
+import { deleteallcomunty } from "@/actions/community/deleteallcomunti";
 
 export default function CommunitySearchProblem() {
   const [message, setMessage] = React.useState("");
@@ -15,9 +17,18 @@ export default function CommunitySearchProblem() {
     await searchProblemInCommunity(message);
     setMessage("");
   };
+  // const handeledelete = async () => {
+  //   await deleteallcomunty();
+  // };
 
   return (
     <div className="mt-2 bg-gray-100 p-2 text-center text-sm  text-gray-700">
+      {/* <Button
+        className="bg-blue-500 text-white rounded-lg p-2 cursor-pointer"
+        onClick={handeledelete}
+      >
+        delete
+      </Button> */}
       <div className="flex items-center justify-between gap-x-2">
         <Search size={24} className="h-6 w-6 text-blue-400" />
         <Input

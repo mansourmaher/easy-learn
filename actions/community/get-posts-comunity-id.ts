@@ -3,11 +3,15 @@
 import { db } from "@/lib/db";
 
 
-export async function getPostsInCommunity(communityId: string) {
+export async function getPostsInCommunity(communityId: string ) {
+    
     return await db.post.findMany({
        
         where: {
         communityId,
+       
+        
+        
         },
         include: {
             user: true,

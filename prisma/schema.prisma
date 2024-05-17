@@ -147,8 +147,8 @@ model Course {
   courseUser     CourseUser[]
   totalPurchases Int?           @default(0)
   report         Report[]
-  Community      Community?
   Conversation   Conversation[]
+  communityId    String?
 
   @@index([categoryId])
 }
@@ -200,11 +200,12 @@ model Attachment {
 }
 
 model Category {
-  id        String   @id @default(uuid())
+  id        String      @id @default(uuid())
   name      String
   courses   Course[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Community Community[]
 }
 
 model Chapter {
@@ -339,16 +340,15 @@ model Notifications {
 }
 
 model Community {
-  id       String @id @default(uuid())
-  title    String
-  courseId String
-  course   Course @relation(fields: [courseId], references: [id])
+  id    String @id @default(uuid())
+  title String
+
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
-
-  @@unique([courseId])
 }
 
 model Post {

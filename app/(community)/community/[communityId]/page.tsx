@@ -8,9 +8,17 @@ import { getCommNameByid } from "@/actions/community/getCommunityName";
 import { MobileSidebar } from "@/app/(dashboard)/_components/mobilesidebar";
 import { UsersSidebar } from "../_componets/users-sidebar";
 import { ComunityList } from "../_componets/list-comunity";
+import { Categories } from "@/app/(dashboard)/(routes)/search/_components/categories";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { CategoriresForComuntiy } from "../_componets/categoriesforcomunity";
+interface getComuntyParams {
+  category?: string;
+}
+
 const Page = async (params: {
   params: {
     communityId: string;
+    category: string | undefined;
   };
 }) => {
   const extractedComunityIdandPostId = params.params.communityId.split("post");
@@ -25,19 +33,22 @@ const Page = async (params: {
           <div className="flex flex-row items-center  ml-4 justify-between">
             <MobileSidebar />
             {/* <CommunityHeader commName={communityName!} /> */}
-            <UsersSidebar communityId={comunityId!} />
+            {/* <UsersSidebar communityId={comunityId!} /> */}
+          </div>
+          <div className="mt-2 flex justify-center items-center">
+            <CategoriresForComuntiy />
           </div>
 
-          <div className="border-b-2 mr-7 ml-6 mt-12"></div>
-          <div className="flex flex-col bg-gray-100 ">
+          <div className="border-b-2 mr-7 ml-6 mt-2"></div>
+          <div className="flex flex-col bg-gray-100 max-h-[570px] ">
             <div className="flex h-full">
-              <div>
+              {/* <div>
                 <ComunityList />
-              </div>
+              </div> */}
               <div className="flex flex-col w-full px-6  space-y-2 bg-white">
                 <CommunitySearchProblem />
 
-                <div className="bg-gray-100 h-[580px] overflow-y-auto p-4 rounded-lg">
+                <div className="bg-gray-100 h-[555px] overflow-y-auto p-4 rounded-lg">
                   {posts.length === 0 && (
                     <div className="text-gray-500 my-auto flex mx-auto">
                       No posts yet in this community
@@ -48,12 +59,15 @@ const Page = async (params: {
 
                 <Message communityId={comunityId!} />
               </div>
+              <div>
+                <ComunityUser communityId={comunityId} />
+              </div>
             </div>
           </div>
         </div>
-        <div>
+        {/* <div>
           <ComunityUser communityId={comunityId} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export default function Message({ communityId }: MessageProps) {
           </Tooltip>
         </TooltipProvider>
 
-        <MdAttachment size={24} className="text-blue-500 cursor-pointer" />
+        {/* <MdAttachment size={24} className="text-blue-500 cursor-pointer" /> */}
         <Input
           placeholder="Write a message"
           className="w-full p-4 rounded-lg bg-white"

@@ -128,8 +128,8 @@ Table Course {
   courseUser CourseUser [not null]
   totalPurchases Int [default: 0]
   report Report [not null]
-  Community Community
   Conversation Conversation [not null]
+  communityId String
 }
 
 Table CourseUser {
@@ -181,6 +181,7 @@ Table Category {
   courses Course [not null]
   createdAt DateTime [default: `now()`, not null]
   updatedAt DateTime [not null]
+  Community Community [not null]
 }
 
 Table Chapter {
@@ -300,8 +301,8 @@ Table Notifications {
 Table Community {
   id String [pk]
   title String [not null]
-  courseId String [unique, not null]
-  course Course [not null]
+  categoryId String
+  category Category
   createdAt DateTime [default: `now()`, not null]
   updatedAt DateTime [not null]
   posts Post [not null]
@@ -419,7 +420,7 @@ Ref: Notifications.teacher > User.id
 
 Ref: Notifications.student > User.id
 
-Ref: Community.courseId - Course.id
+Ref: Community.categoryId > Category.id
 
 Ref: Post.userId > User.id
 
