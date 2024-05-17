@@ -68,7 +68,7 @@ export async function POST(req: Request):  Promise<void | Response> {
     const userId=user?.user?.id as string
     
     const course = await db.course.create({ data: { userId,title } });
-    const community=await db.community.create({data:{courseId:course.id,title:course.title}})
+    // const community=await db.community.create({data:{courseId:course.id,title:course.title}})
 
     return new Response(JSON.stringify(course), { status: 200 });
   } catch (e) {
