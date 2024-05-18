@@ -1,6 +1,5 @@
 import { getAllEtudiantWithCompteRendu } from "@/actions/teacher/get-all-etduiant-with-compte-rendu";
-import { columns } from "./table-user/columns";
-import { DataTable } from "./table-user/data-table";
+
 import { Activity, FileText } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -10,26 +9,31 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getthebeststudentinthe5bestcourse } from "@/actions/teacher/getthebeststudentinthebest5course";
+import {
+  getthebeststudentineachcourse,
+  getthebeststudentinthe5bestcourse,
+} from "@/actions/teacher/getthebeststudentinthebest5course";
 import { Badge } from "@/components/ui/badge";
 
 interface TopstudentCardProps {
-  topstudent: Awaited<ReturnType<typeof getthebeststudentinthe5bestcourse>>;
+  topstudent: Awaited<ReturnType<typeof getthebeststudentineachcourse>>;
 }
 
-function TopstudentCard({ topstudent }: TopstudentCardProps) {
+function TopstudentCardindedicatedcourse({ topstudent }: TopstudentCardProps) {
   return (
     <Card x-chunk="dashboard-01-chunk-5">
       <CardHeader>
         <CardTitle className="flex gap-x-2">
-          <Activity className="h-6 w-6 " />
-          <span className="">Student Classemnt</span>
+          <Activity className="h-6 w-6 text-sky-500" />
+          <span className="text-sky-500">Student Classemnt</span>
         </CardTitle>
         <CardDescription>
           We dispaly the best student in each course
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-8">
+    
+        {/*@ts-ignore*/}
         {topstudent?.map((student, index) => (
           <div className="flex items-center gap-4" key={index}>
             <Avatar className="hidden h-9 w-9 sm:flex">
@@ -60,4 +64,4 @@ function TopstudentCard({ topstudent }: TopstudentCardProps) {
   );
 }
 
-export default TopstudentCard;
+export default TopstudentCardindedicatedcourse;

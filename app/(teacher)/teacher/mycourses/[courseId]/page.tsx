@@ -2,6 +2,7 @@ import { getCourseIncludeProgresse } from "@/actions/teacher/get-all-course-incl
 import React from "react";
 import SingleCoursePage from "../../courses/single-course-page";
 import { auth } from "@/auth";
+import { getthebeststudentineachcourse } from "@/actions/teacher/getthebeststudentinthebest5course";
 
 const Page = async ({
   params,
@@ -13,6 +14,7 @@ const Page = async ({
   const courseUserIncludeProgress = await getCourseIncludeProgresse(
     params.courseId
   );
+
   const user = await auth();
   const isaverifiredteacher =
     user?.user.role == "TEACHER" && user?.user.teacherAccess == true;

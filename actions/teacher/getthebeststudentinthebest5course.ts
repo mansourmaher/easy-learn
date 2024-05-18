@@ -3,6 +3,7 @@
 import { auth } from "@/auth"
 import { getTop5PurchasedCoursesByTeacher } from "../dashboard/gettop5coursebyteacher"
 import { db } from "@/lib/db"
+import { json } from "stream/consumers"
 
 export async function getthebeststudentinthe5bestcourse()
 {
@@ -62,5 +63,46 @@ export async function getthebeststudentinthe5bestcourse()
     ))
     //   console.log(topstudentineachcourse)
     return topstudentineachcourse
+
+}
+
+
+export async function getthebeststudentineachcourse(id:string)
+{
+    // i want the same function but with only one course
+    const user=await auth()
+    const userId=user?.user.id
+    const course=await db.course.findMany({
+        where:{
+            id:id
+        },
+        include:{
+            courseUser:{
+                orderBy:{
+                    score:"desc"
+                },
+               
+                include:{
+                    user:true
+                }
+            }
+        }
+    })
+    console.log(course)
+    
+   const studentsordersbytheirscore=await Promise.all(course.map(async (course)=>{
+        const topstudent=course.courseUser.sort((a,b)=>b.score!-a.score!).shift()
+        return {
+            course:course.title,
+            name:topstudent?.user?.name!,
+            email:topstudent?.user?.email!,
+            image:topstudent?.user?.image!,
+            score:topstudent?.score
+        }
+    }))
+    console.log(studentsordersbytheirscore)
+    return studentsordersbytheirscore
+
+
 
 }

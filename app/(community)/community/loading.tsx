@@ -17,7 +17,7 @@ function Loading() {
         </div>
       </div>
       <div className="flex h-screen bg-gray-100 animate-pulse">
-        <aside className="w-80 border-r bg-white">
+        {/* <aside className="w-80 border-r bg-white">
           <div className="overflow-y-auto py-4 px-3">
             <div className="h-5 bg-gray-200 rounded w-1/3 mb-3"></div>
             <ul className="space-y-2 mt-3">
@@ -107,7 +107,7 @@ function Loading() {
               </li>
             </ul>
           </div>
-        </aside>
+        </aside> */}
         <main className="flex-1">
           <div className="border-b p-3">
             <div className="h-10 bg-gray-200 rounded w-full"></div>

@@ -20,8 +20,9 @@ const Page = async ({ searchParams }: SearchPageProps) => {
     teacher: searchParams.teacher!,
     level: searchParams.level!,
   });
-  const user=await auth();
-  const isaverifiredteacher=user?.user.role=="TEACHER" && user?.user.teacherAccess==true;
+  const user = await auth();
+  const isaverifiredteacher =
+    user?.user.role == "TEACHER" && user?.user.teacherAccess == true;
   if (!isaverifiredteacher) {
     return <div>Not authorized</div>;
   }

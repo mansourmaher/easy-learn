@@ -33,8 +33,8 @@ export async function getCourseIncludeProgresse(courseId:string) {
     const courseIncludeUser=await db.courseUser.findMany({
         where:{
             course:{
-                userId:userId,
-                isPublished:true,
+                 userId:userId,
+                // isPublished:true,
                 id:courseId
       
             },

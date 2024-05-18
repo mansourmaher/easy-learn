@@ -39,7 +39,7 @@ export async function teacherGetMyCourses({
       courseUser:true
     },
     orderBy:{
-      createdAt:"desc"
+      totalStars:"desc"
     }
   })
   

@@ -30,8 +30,8 @@ export default function SingleCheckPage({
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
                 <CardTitle className="flex gap-x-2">
-                  <FileText className="h-6 w-6 text-sky-500" />
-                  <span className="text-sky-500">Student Compte Rendu</span>
+                  <FileText className="h-6 w-6 " />
+                  <span className="">Student Compte Rendu</span>
                 </CardTitle>
                 <CardDescription>
                   Recent Compte Rendu from students

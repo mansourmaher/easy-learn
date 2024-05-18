@@ -8,7 +8,7 @@ interface MycoursesListProps {
 
 export default function MycoursesList({ courses }: MycoursesListProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ml-24 ">
       {courses.map((course) => (
         <div key={course.id}>
           <CourseItem course={course} />
