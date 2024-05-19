@@ -11,7 +11,9 @@ export async function getMycoursesnames()
     const userId=user?.user.id
     const courses=await db.course.findMany({
         where:{
-            userId:userId
+            userId:userId,
+            isPublished:true,
+            status:"verified"
         },
         select:{
             title:true,

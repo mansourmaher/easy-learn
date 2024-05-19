@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
+import CreateCourseBtn from "./createcoursebtn";
 
 const Header = async () => {
   const teacher = await auth();
@@ -55,7 +56,9 @@ const Header = async () => {
                 percentage > 50 ? "text-green-800" : "text-red-800"
               )}
             >
-              {percentage > 50 ? "You are doing great! 👏" : "You need to improve your content!"}
+              {percentage > 50
+                ? "You are doing great! 👏"
+                : "You need to improve your content!"}
             </h3>
 
             <div>
@@ -80,9 +83,7 @@ const Header = async () => {
           </div>
         </div>
 
-        <Button variant={"primary"} className="w-40">
-          Create Course
-        </Button>
+        <CreateCourseBtn />
       </div>
     </div>
   );

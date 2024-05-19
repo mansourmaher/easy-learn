@@ -38,8 +38,10 @@ import {
 import { useRouter } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { startMeeting } from "@/actions/teacher/startmetting";
+
+
 import toast from "react-hot-toast";
+import { startprivatecoursemeting } from "@/actions/metting/startmetting";
 const FormSchema = z.object({
   course: z.string({
     required_error: "Please the course",
@@ -54,9 +56,10 @@ export function DialogDemo() {
     resolver: zodResolver(FormSchema),
   });
   const router = useRouter();
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    await startprivatecoursemeting(data.course);
     router.push(`/room/${data.course}`);
-  }
+  };
   const [courses, setCourses] = React.useState<
     Awaited<ReturnType<typeof getMycoursesnames>>
   >([]);
@@ -68,9 +71,9 @@ export function DialogDemo() {
     fetchcourses();
   }, []);
   const handelStartMeeting = async () => {
-    const res = await startMeeting(meetingname, meetingdescription);
-    toast.success("Meeting created successfully will be started now");
-    router.push(`/room/${res.id}`);
+    // const res = await startMeeting(meetingname, meetingdescription);
+    // toast.success("Meeting created successfully will be started now");
+    // router.push(`/room/${res.id}`);
   };
   return (
     <Dialog>

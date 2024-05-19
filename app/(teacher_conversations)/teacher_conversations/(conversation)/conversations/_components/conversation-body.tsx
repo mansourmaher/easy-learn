@@ -9,7 +9,7 @@ import { MessageBox } from "./message-box";
 import { auth } from "@/auth";
 import { getCurrentUser } from "@/actions/conversation/getcurrentuser";
 import { getMessages } from "@/actions/conversation/getmessages";
-import { isuserpurchasedthecourseconversationId } from "@/actions/conversation/isuserpurchasedthecourseconversations";
+import { isuserpurchasedthecourseconversationId } from "@/actions/conversation/isuserpurchasedthecourseconversations copy";
 import { pusherClient } from "@/lib/pusher";
 import { getTheTeacherFromConversationId } from "@/actions/conversation/gettheteacherfromconversationid";
 
@@ -20,7 +20,7 @@ interface ConversationBodyProps {
     ReturnType<typeof isuserpurchasedthecourseconversationId>
   >;
   messages: Awaited<ReturnType<typeof getMessages>>;
-  teacher:Awaited<ReturnType<typeof getTheTeacherFromConversationId>>;
+  teacher: Awaited<ReturnType<typeof getTheTeacherFromConversationId>>;
 }
 
 export function ConversationBody({
@@ -28,7 +28,7 @@ export function ConversationBody({
   currentUser,
   ispurchased,
   messages,
-  teacher
+  teacher,
 }: ConversationBodyProps) {
   const [initailmessages, setInitialMessages] =
     React.useState<Awaited<ReturnType<typeof getMessages>>>(messages);
@@ -82,7 +82,7 @@ function EmptyState() {
     </div>
   );
 }
-function UnothorizeState() {
+export function UnothorizeState() {
   return (
     <div className="flex h-full flex-col items-center justify-center gap-2">
       <GhostIcon className="h-16 w-16 text-muted-foreground" />
@@ -91,6 +91,19 @@ function UnothorizeState() {
       </div>
       <div className="text-sm text-muted-foreground">
         Please purchase the course to view this conversation
+      </div>
+    </div>
+  );
+}
+export function NoConversationfound() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2">
+      <GhostIcon className="h-16 w-16 text-muted-foreground" />
+      <div className="text-2xl font-semibold text-muted-foreground">
+        Sorry No Conversation Found
+      </div>
+      <div className="text-sm text-muted-foreground">
+        Start a conversation by purchasing a course
       </div>
     </div>
   );

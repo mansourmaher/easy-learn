@@ -12,8 +12,7 @@ export async function etudiantgetycourses()
     const courses=await db.courseUser.findMany({
         where:{
             course:{
-                isPublished:true,
-                status:"verified"
+               
             },
             user:{
                 id:userId
