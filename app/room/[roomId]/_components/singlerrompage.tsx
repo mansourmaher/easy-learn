@@ -6,6 +6,7 @@ import { v4 } from "uuid";
 import { Button } from "@/components/ui/button";
 import { sendMessageofthestream } from "@/actions/conversation/sendmessageofstream";
 import { closeMeeting } from "@/actions/system/closemeeting";
+import { GhostIcon } from "lucide-react";
 
 interface SingleRoomPageProps {
   theuseristheownerofthemeeting: boolean;
@@ -118,3 +119,30 @@ const SingleRoomPage = ({
 };
 
 export default SingleRoomPage;
+
+export function NoMeetingFound() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2">
+      <GhostIcon className="h-16 w-16 text-muted-foreground" />
+      <div className="text-2xl font-semibold text-muted-foreground">
+        No meeting found
+      </div>
+      <div className="text-sm text-muted-foreground">
+        This meeting has been finished or not found
+      </div>
+    </div>
+  );
+}
+export function Noaccestothemeeting() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2">
+      <GhostIcon className="h-16 w-16 text-muted-foreground" />
+      <div className="text-2xl font-semibold text-muted-foreground">
+        You do not have access to this meeting
+      </div>
+      <div className="text-sm text-muted-foreground">
+        this meeting is not available for you to join
+      </div>
+    </div>
+  );
+}
