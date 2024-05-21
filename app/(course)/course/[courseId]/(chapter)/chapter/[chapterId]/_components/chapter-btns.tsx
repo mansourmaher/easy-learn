@@ -12,6 +12,7 @@ interface ChapterButtonsProps {
   courseId: string;
   hasreport: boolean;
   isCompltedthechapter: boolean;
+  studentshouldreport: boolean;
 }
 
 export default function ChapterButtons({
@@ -19,6 +20,7 @@ export default function ChapterButtons({
   courseId,
   hasreport,
   isCompltedthechapter,
+  studentshouldreport,
 }: ChapterButtonsProps) {
   const [selected, setSelected] = React.useState(0);
 
@@ -74,6 +76,7 @@ export default function ChapterButtons({
             hasreport={hasreport || !chapter?.toDo!}
             courseId={courseId}
             isCompltedthechapter={isCompltedthechapter}
+            studentshouldreport={studentshouldreport}
           />
         </div>
       </div>

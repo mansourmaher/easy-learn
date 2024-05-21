@@ -43,7 +43,6 @@ export default function TeacherCardCourse({ course }: TeacherCardCourseProps) {
     getCourseCount();
     getreviewCount();
     getRating();
-    console.log("course", course);
   });
 
   return (
@@ -57,14 +56,14 @@ export default function TeacherCardCourse({ course }: TeacherCardCourseProps) {
           <AvatarFallback>JP</AvatarFallback>
         </Avatar>
         <div className="flex-1">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-4  ">
+            <div className="col-span-3 ">
               <h2 className="text-xl font-semibold">{course?.user?.name}</h2>
               <p className="text-sm text-gray-500">
                 {course?.user?.subtitle || "No subtitle"}
               </p>
             </div>
-            <div className="flex">
+            <div className="flex md:ml-4">
               {[...Array(5)].map((_, index) => {
                 const currentRating = index + 1;
                 return (

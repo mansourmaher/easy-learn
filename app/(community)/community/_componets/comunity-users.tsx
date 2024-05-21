@@ -9,7 +9,7 @@ export const ComunityUser = async ({ communityId }: ComunityUserProps) => {
   const users = await getAllusersInComunityById(communityId);
 
   return (
-    <div className="hidden  lg:block    bg-gray-100  space-y-2 w-80">
+    <div className="lg:block    bg-gray-100  space-y-2 w-80">
       <div className="px-7 text-sm font-semibold bg-white  py-8 border-l-2">
         Members - {users.length}
       </div>

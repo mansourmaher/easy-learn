@@ -24,6 +24,8 @@ import LogoutBtn from "./logoutbtn";
 import TeacherBtn from "./teacherbtn";
 import SearchModalTrigger from "./searchModlatrigger";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Secondsidbar } from "./secondMobilesidebar";
+import { MobileSidebar } from "./mobilesidebar";
 
 const StudentNavbar = async () => {
   const notifs = await getAllNotifications();
@@ -98,55 +100,9 @@ const StudentNavbar = async () => {
           )}
         </Button>
       </nav>
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <nav className="grid gap-6 text-lg font-medium">
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-lg font-semibold md:text-base"
-            >
-              <Package2 className="h-6 w-6" />
-              <span className="sr-only">Acme Inc</span>
-            </Link>
-            <Link
-              href="#"
-              className="text-foreground transition-colors hover:text-foreground"
-            >
-              Dashboard
-            </Link>
-            <Button
-              variant={"link"}
-              size={"sm"}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-              asChild
-            >
-              <Link href="/teacher/mycourses">My Courses</Link>
-            </Button>
 
-            <Button
-              variant={"link"}
-              size={"sm"}
-              className="text-muted-foreground transition-colors hover:text-foreground"
-              asChild
-            >
-              <Link href="/teacher/check">WorkFlow</Link>
-            </Button>
-            <DialogDemo />
-            <Link
-              href="#"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Analytics
-            </Link>
-          </nav>
-        </SheetContent>
-      </Sheet>
+      <MobileSidebar />
+
       <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
         <form className="ml-auto flex-1 sm:flex-initial">
           <div className="relative">

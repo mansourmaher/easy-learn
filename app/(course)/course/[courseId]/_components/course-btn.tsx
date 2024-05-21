@@ -51,17 +51,6 @@ export default function CourseBtn({
           >
             Forum Discussions
           </Button>
-          <Button
-            variant={selected === 2 ? "primary" : "ghost"}
-            className="rounded-full  p-4"
-            size="sm"
-            onClick={() => {
-              selected === 1 && onchange && onchange();
-              selected === 2 ? setSelected(0) : setSelected(2);
-            }}
-          >
-            Download Resources
-          </Button>
         </div>
       </div>
     </div>

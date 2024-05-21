@@ -42,6 +42,7 @@ interface ConfirmModelProps {
   courseId: string;
   hasreport: boolean;
   isCompltedthechapter: boolean;
+  studentshouldreport: boolean;
 }
 
 export const QuizForm = ({
@@ -49,6 +50,7 @@ export const QuizForm = ({
   courseId,
   hasreport,
   isCompltedthechapter,
+  studentshouldreport,
 }: ConfirmModelProps) => {
   const {
     register,
@@ -69,6 +71,15 @@ export const QuizForm = ({
   const [seccondAvailable, setSeccondAvailable] = useState(10);
   const [options, setOptions] = useState([]);
   const [isFalse, setIsFalse] = useState(false);
+  const [isloading, setIsloading] = useState(true);
+
+  const btnShouldbediabled = () => {
+    if ((studentshouldreport && !hasreport) || correctAnswer < wrongAnswer) {
+      return true;
+    }
+
+    return false;
+  };
 
   const cureentQuestion = useMemo(() => {
     //@ts-ignore
@@ -98,10 +109,9 @@ export const QuizForm = ({
     if (cureentQuestion) {
       shuffleOptions();
     }
-    if (cureentQuestion && seccondAvailable === 0 || isCompltedthechapter) {
+    if ((cureentQuestion && seccondAvailable === 0) || isCompltedthechapter) {
       return () => clearInterval(interval);
     }
-    
 
     interval = setInterval(() => {
       setSeccondAvailable((prev) => prev - 1);
@@ -113,7 +123,6 @@ export const QuizForm = ({
     if (seccondAvailable === 0 && questionIndex === quiz.length - 1) {
       setDipslayResult(true);
 
-      console.log("quiz ended");
       setQuiz([]);
     } else if (seccondAvailable === 0) {
       setQuestionIndex((prevIndex) =>
@@ -133,6 +142,7 @@ export const QuizForm = ({
         `/api/courses/${courseId}/chapters/${chapterId}/quizzes`
       );
       setQuiz(response.data);
+      setIsloading(false);
 
       //setOptions(response.data[0].options[0].options);
 
@@ -233,8 +243,18 @@ export const QuizForm = ({
 
           <AlertDialogDescription>
             <div className="mb-6 mt-6">
-              
               {/* <Stepper steps={quiz} currentStep={questionIndex + 1}  isFalse={isFalse} /> */}
+              {isloading ? (
+                <div className="flex flex-col items-center justify-center">
+                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
+                  <h1>Loading...</h1>
+                </div>
+              ) : null}
+              {quiz.length == 0 && !isloading ? (
+                <div className="flex flex-col items-center justify-center">
+                  <h1>No Quiz available for this chapter</h1>
+                </div>
+              ) : null}
             </div>
             {cureentQuestion ? (
               <div>
@@ -267,69 +287,63 @@ export const QuizForm = ({
             ) : null}
           </AlertDialogDescription>
           {isCompltedthechapter ? (
-              <div>
-                <h1 className="bg-green-300 border p-2 text-center">
-                  🎉 Congratulation you have passed the quiz
-                </h1>
-              </div>
-            ) :null}
+            <div>
+              <h1 className="bg-green-300 border p-2 text-center">
+                🎉 Congratulation you have passed the quiz
+              </h1>
+            </div>
+          ) : null}
 
           <AlertDialogFooter>
             {!isCompltedthechapter ? (
-              
               <>
+                <AlertDialogCancel>Close</AlertDialogCancel>
+                <Button
+                  disabled={questionIndex === quiz.length}
+                  onClick={() => {
+                    setQuestionIndex((prevIndex) =>
+                      prevIndex > 0 ? prevIndex - 1 : prevIndex
+                    );
+                  }}
+                >
+                  Previous
+                </Button>
 
-            <AlertDialogCancel>Close</AlertDialogCancel>
-            <Button
-              disabled={questionIndex === quiz.length}
-              onClick={() => {
-                setQuestionIndex((prevIndex) =>
-                  prevIndex > 0 ? prevIndex - 1 : prevIndex
-                );
-              }}
-            >
-              Previous
-            </Button>
+                <Button
+                  onClick={() => {
+                    setQuestionIndex(0);
+                    setCorrectAnswer(0);
+                    setWrongAnswer(0);
+                    setDipslayResult(false);
+                    setSeccondAvailable(10);
+                    handleShowQuiz();
+                  }}
+                >
+                  Restart
+                </Button>
+                <Button
+                  disabled={
+                    questionIndex === quiz.length ||
+                    questionIndex === quiz.length - 1
+                  }
+                  onClick={() => {
+                    setQuestionIndex((prevIndex) =>
+                      prevIndex < quiz.length - 1 ? prevIndex + 1 : prevIndex
+                    );
+                    setWrongAnswer(wrongAnswer + 1);
+                    setSeccondAvailable(10);
+                  }}
+                >
+                  Skip
+                </Button>
 
-            <Button
-              onClick={() => {
-                setQuestionIndex(0);
-                setCorrectAnswer(0);
-                setWrongAnswer(0);
-                setDipslayResult(false);
-                setSeccondAvailable(10);
-                handleShowQuiz();
-              }}
-            >
-              Restart
-            </Button>
-            <Button
-              disabled={
-                questionIndex === quiz.length ||
-                questionIndex === quiz.length - 1
-              }
-              onClick={() => {
-                setQuestionIndex((prevIndex) =>
-                  prevIndex < quiz.length - 1 ? prevIndex + 1 : prevIndex
-                );
-                setWrongAnswer(wrongAnswer + 1);
-                setSeccondAvailable(10);
-              }}
-            >
-              Skip
-            </Button>
-
-            <MarkAsCompleteButton
-              disabled={
-                hasreport === false || wrongAnswer > correctAnswer
-                  ? true
-                  : false || dipslayResult === false
-              }
-              chapterId={chapterId}
-              courseId={courseId}
-              mustUploadwork={!hasreport && correctAnswer > wrongAnswer}
-            />
-            </>
+                <MarkAsCompleteButton
+                  disabled={btnShouldbediabled()}
+                  chapterId={chapterId}
+                  courseId={courseId}
+                  mustUploadwork={!hasreport && correctAnswer > wrongAnswer}
+                />
+              </>
             ) : null}
           </AlertDialogFooter>
         </AlertDialogContent>

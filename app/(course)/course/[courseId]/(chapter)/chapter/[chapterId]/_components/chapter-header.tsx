@@ -24,7 +24,7 @@ export default function ChapterHeader({
   courseName,
 }: ChapterHeaderProps) {
   return (
-    <div className="flex m-8 justify-between items-center ">
+    <div className="hidden md:flex m-8 justify-between items-center ">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>

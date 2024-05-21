@@ -27,7 +27,7 @@ const Page = async (params: {
       <div className="flex justify-between h-full w-full ">
         <div className="w-full ">
           <div className="flex flex-row items-center  ml-4 justify-between">
-            <MobileSidebar />
+            {/* <MobileSidebar /> */}
             {/* <CommunityHeader commName={communityName!} /> */}
             {/* <UsersSidebar communityId={comunityId!} /> */}
           </div>

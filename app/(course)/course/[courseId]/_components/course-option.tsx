@@ -14,13 +14,13 @@ export default function CourseOption({
   courseTotalPurchased,
 }: CourseOptionProps) {
   return (
-    <div>
+    <div className="">
       <hr className="mx-8" />
-      <div className="flex flex-row justify-between items-center mx-16 my-8">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mx-16 my-8">
         <div className="flex flex-row items-end">
           <div className="flex flex-col items-start space-y-2">
             <div>
-              <span className="text-lg font-semibold">Skill Level</span>
+              <span className="text-lg font-semibold">Level</span>
             </div>
             <div className="rounded-full border p-3 border-blue-500">
               <Signal size={30} className="text-blue-600" />

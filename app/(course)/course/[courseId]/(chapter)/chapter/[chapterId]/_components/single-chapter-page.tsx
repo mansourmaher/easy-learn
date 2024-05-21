@@ -11,6 +11,7 @@ import { getChapterById } from "@/actions/chapter/get-chapter-by-id";
 import ChapterResources from "./chapter-resources";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { auth } from "@/auth";
+import { studentShouldreport } from "@/actions/chapter/studentshouldreportsomthing";
 
 interface ChapterPageProps {
   courseId: string;
@@ -33,6 +34,8 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
   const existingReport = await hasReportChapter(chapterId);
   const user = await auth();
   const userId = user?.user.id as string;
+  const studentshouldreport=await studentShouldreport(chapterId)
+  
 
   const isCompltedthechapter = await db.userProgress.findFirst({
     where: {
@@ -51,21 +54,22 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
         courseName={courseName?.title!}
       />
       {/* <ChapterTitle title={chapter?.title!} /> */}
-      <div className="flex items-start  w-full ">
-        <ChapterVedio
-          videosrc={chapter?.videoUrl}
-          img={courseName?.imageUrl!}
-        />
-        <div className="border-l-2 border-slate-400 h-[500px] pr-2"></div>
-        <div className="flex flex-col gap-y-4 w-full  pr-4  h-[500px] ">
+      <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="col-span-2 md:col-span-3 ">
+          <ChapterVedio
+            videosrc={chapter?.videoUrl}
+            img={courseName?.imageUrl!}
+          />
+        </div>
+        <div className="col-span-2 items-center md:col-span-1">
           <ChapterReport
             chapterId={chapterId}
             courseId={courseId}
             existingReport={existingReport}
           />
 
-          <div className="h-[200px]  mb-8 ">
-            <ScrollArea>
+          <div className="h-[280px]  mb-8 ">
+            <ScrollArea className="h-[280px]">
               <ChapterResources resources={chapter?.resources!} />
             </ScrollArea>
           </div>
@@ -77,6 +81,8 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
         hasreport={!!existingReport}
         courseId={courseId}
         isCompltedthechapter={isCompltedthechapter?.isCompleted!}
+        studentshouldreport={studentshouldreport}
+        
       />
       <hr className="m-8 mt-12" />
       <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-6">
