@@ -1,9 +1,15 @@
 "use client";
 import { getPostsInCommunity } from "@/actions/community/get-posts-comunity-id";
+import {
+  handeldelteresponse,
+  handledelepost,
+} from "@/actions/community/handeldeltepost";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { format, formatDistance } from "date-fns";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ComunityPostItemProps {
@@ -17,6 +23,19 @@ export default function ComunityPostItem({
   onchange,
   postId,
 }: ComunityPostItemProps) {
+  const user = useSession();
+  const userId = user.data?.user.id;
+  const router = useRouter();
+
+  const hadneldeletepost = async () => {
+    await handledelepost(post.id);
+    router.refresh();
+  };
+  const hadneldeleteresponse = async (id:string) => {
+    await handeldelteresponse(id);
+    router.refresh();
+    // delete response
+  };
   return (
     <div className="hover:bg-slate-300/20 dark:hover:bg-gray-500   dark:border-gray-500  transition-colors duration-200 ease-in-out p-2">
       <div className="flex items-start space-x-4">
@@ -43,7 +62,6 @@ export default function ComunityPostItem({
               alt="image"
               className="rounded-lg"
               loading="lazy"
-            
             />
           ) : null}
 
@@ -56,9 +74,7 @@ export default function ComunityPostItem({
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <div className="text-xs text-gray-500">
-                 
-                </div>
+                <div className="text-xs text-gray-500"></div>
                 <div className="text-xs text-gray-500">
                   <span>{post.PostResponse.length || 0}</span> Replies
                 </div>
@@ -68,6 +84,11 @@ export default function ComunityPostItem({
                 >
                   Reply
                 </div>
+                {userId === post.user.id && (
+                  <div className="text-xs text-gray-500 cursor-pointer" onClick={hadneldeletepost}>
+                    Delete
+                  </div>
+                )}
               </div>
             </div>
             {post.PostResponse.map((response) => (
@@ -114,6 +135,11 @@ export default function ComunityPostItem({
                       )}
                     </div>
                   </div>
+                  {userId === post.user.id && (
+                    <div className="text-xs text-gray-500 cursor-pointer" onClick={()=>hadneldeleteresponse(response.id)}>
+                      Delete
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

@@ -5,17 +5,14 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
 import { VideoIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -36,11 +33,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
-import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 
-
-import toast from "react-hot-toast";
 import { startprivatecoursemeting } from "@/actions/metting/startmetting";
 const FormSchema = z.object({
   course: z.string({
@@ -49,14 +43,16 @@ const FormSchema = z.object({
 });
 
 export function DialogDemo() {
-  const [isPublicMeeting, setIsPublicMeeting] = useState(false);
+  const [isPublicMeeting, setIsPublicMeeting] = useState(true);
   const [meetingname, setMeetingname] = useState("");
   const [meetingdescription, setMeetingdescription] = useState("");
+  const [isloading, setIsloading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
   const router = useRouter();
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    setIsloading(true);
     await startprivatecoursemeting(data.course);
     router.push(`/room/${data.course}`);
   };
@@ -94,11 +90,6 @@ export function DialogDemo() {
               <VideoIcon size={24} />
               Create room
             </span>
-            <Switch
-              onCheckedChange={() => {
-                setIsPublicMeeting(!isPublicMeeting);
-              }}
-            />
           </DialogTitle>
           <DialogDescription>
             {isPublicMeeting}
@@ -142,8 +133,8 @@ export function DialogDemo() {
                 )}
               />
 
-              <Button variant={"primary"} type="submit">
-                Submit
+              <Button variant={"primary"} type="submit" disabled={isloading || !form.formState.isValid}>
+                {isloading ? "The meet will start in few second " : "Start Now"}
               </Button>
             </form>
           </Form>
@@ -165,10 +156,10 @@ export function DialogDemo() {
             <Button
               type="button"
               variant="primary"
-              disabled={!meetingname || !meetingdescription}
+              disabled={!meetingname || !meetingdescription || isloading}
               onClick={handelStartMeeting}
             >
-              Start meeting
+              {isloading ? "Creating..." : "Start Now"}
             </Button>
           </div>
         )}

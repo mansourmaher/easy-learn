@@ -155,12 +155,11 @@ export default function TeacherProfile({
                     )}
                   </div>
                 </div>
-                <Button variant="outline">
-                  <div className="flex items-center space-x-2">
-                    <Bell size={16} className="text-gray-500" />{" "}
-                    <span className="text-gray-500">Follow</span>
-                  </div>
-                </Button>
+
+                <div className="flex items-center space-x-2">
+                  <Bell size={16} className="text-gray-500" />{" "}
+                </div>
+
                 <span className="text-gray-500 dark:text-gray-300 text-center">
                   Folllow me on social media to get the latest updates about my
                   courses and my latest projects
@@ -203,9 +202,7 @@ export default function TeacherProfile({
                     </p>
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">
-                  Some of my patients
-                </h3>
+                <h3 className="text-lg font-semibold mb-2">Skills</h3>
 
                 <div className="flex flex-wrap gap-2">
                   {teacher?.patiants?.map((patiant, index) => {
@@ -229,8 +226,8 @@ export default function TeacherProfile({
                     Some of my reviews from students from my courses
                   </h2>
                   <span>
-                    I think that the best way to learn is to learn from the
-                    experience of others
+                    These are some of the reviews from students who have taken
+                    my courses
                   </span>
                 </div>
 

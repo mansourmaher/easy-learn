@@ -21,7 +21,6 @@ export default function SheetNotification({
   notifications,
   userId,
 }: UserButtonProps) {
-  const currentUser = getCurrentUser();
   const [notifcationNumber, setNotificationNumber] = useState<number>(0);
   const [notification, setNotification] =
     useState<Awaited<ReturnType<typeof getAllNotifications>>>(notifications);
@@ -52,8 +51,8 @@ export default function SheetNotification({
               {notifcationNumber}
             </span>
           )}
-          <div className="bg-muted rounded-full  border p-2">
-          <BellDotIcon className="h-5 w-5" />
+          <div className="bg-muted rounded-full p-2">
+            <BellDotIcon className="h-5 w-5" />
           </div>
         </button>
       </SheetTrigger>

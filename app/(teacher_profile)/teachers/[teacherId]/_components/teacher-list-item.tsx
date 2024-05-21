@@ -17,7 +17,7 @@ export default function TecaherListItem({ teacher }: TeacherListItemProps) {
       <div
         className="mt-6 flex items-center space-x-3 mx-2 hover:shadow-lg cursor-pointer "
         onClick={() => {
-          router.push(`/teacher/${teacher.user?.id}`);
+          router.push(`/teachers/${teacher.user?.id}`);
         }}
       >
         <Avatar>

@@ -18,13 +18,11 @@ import IconComponent from "./icon-components";
 
 interface CategoryItemProps {
   label: string;
-
   value: string;
 }
 
 export const CategoryItem = ({
   label,
-
   value,
 }: CategoryItemProps) => {
   const iconsMap: Record<Category["name"], IconType> = {

@@ -44,7 +44,7 @@ function DonutsChart({ level, users }: Props) {
   };
 
   return (
-    <Card >
+    <Card>
       <CardHeader>
         <CardTitle>{userData ? "User Data" : "Course Skill Level"}</CardTitle>
         <CardDescription>
@@ -61,7 +61,7 @@ function DonutsChart({ level, users }: Props) {
                 setUserData(true);
               }}
             >
-              User Data
+              Students Data
             </Badge>
           </div>
           <div>

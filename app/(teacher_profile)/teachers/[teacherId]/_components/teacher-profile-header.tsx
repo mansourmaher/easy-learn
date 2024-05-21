@@ -25,7 +25,9 @@ export default function TeacherProfileHeader({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/unstructor">Instructors</BreadcrumbLink>
+            <BreadcrumbLink href="/unstructor">
+              Teachers
+            </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>

@@ -27,14 +27,12 @@ export default function SingleNotifications({
     message.split(" ")[2] === "purchased" && router.push(`/teacher/courses`);
     message.split(" ")[2] === "completed" && router.push(`/teacher/courses`);
 
-    message.split(" ")[3] === "work" && alert("You student submit the work");
-    router.push(`/teacher/check`);
+    message.split(" ")[3] === "work" && router.push(`/teacher/check`);
     message.split(" ")[3] === "your" &&
       router.push(
         `/course/${notifcation?.courseId}/chapter/${notifcation?.chapterId}`
       );
-
-    alert(message);
+      message.split(" ")[4] === "meeting" && router.push(`/room/${notifcation?.distination}`);
   };
 
   return (

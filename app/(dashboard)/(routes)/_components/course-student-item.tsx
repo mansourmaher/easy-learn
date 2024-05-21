@@ -15,9 +15,9 @@ interface CourseStudentItemProps {
 
 export default function CourseStudentItem({ course }: CourseStudentItemProps) {
   const router = useRouter();
-  const handeldelete = async () => {
-    await deletepurchase(course.course.id);
-  };
+  // const handeldelete = async () => {
+  //   await deletepurchase(course.course.id);
+  // };
   return (
     <div>
       <div
@@ -28,9 +28,9 @@ export default function CourseStudentItem({ course }: CourseStudentItemProps) {
           <div className="shrink-0 ">
             <div className="p-2 rounded-full">
               <CourseProgress userProgress={course.progress} />
-              <Button onClick={handeldelete} className="mt-4">
+              {/* <Button onClick={handeldelete} className="mt-4">
                 delete
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="min-w-0 flex-1">

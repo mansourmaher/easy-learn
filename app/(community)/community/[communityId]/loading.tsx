@@ -3,19 +3,6 @@ import React from "react";
 function Loading() {
   return (
     <div>
-      <div className="bg-gray-200 text-white py-6 animate-pulse mb-4">
-        <div className="  flex  items-center space-x-4 pl-4">
-          <div className="w-52 h-8 bg-gray-300 rounded"></div>
-          <div className="flex space-x-4 pl-16">
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-            <div className="w-24 h-4 bg-gray-300 rounded"></div>
-          </div>
-        </div>
-      </div>
       <div className="flex h-screen bg-gray-100 animate-pulse">
         {/* <aside className="w-80 border-r bg-white">
           <div className="overflow-y-auto py-4 px-3">

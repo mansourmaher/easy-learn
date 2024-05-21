@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CircleUser, Menu, Package2, Search } from "lucide-react";
+import { CircleUser, Menu, Package2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,7 +9,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { DialogDemo } from "@/app/room/[roomId]/_components/createroommodal";
@@ -19,14 +18,12 @@ import { getAllNotifications } from "@/actions/teacher/get-all-notifications";
 import { auth } from "@/auth";
 import SheetNotification from "@/components/Auth/notification-sheet";
 import { getTheFirstConversation } from "@/actions/conversation/getthefirstconversation";
-import { getteacherfirstconversation } from "@/actions/conversation/getteacherfirstconversation";
 import { getFirstCommunity } from "@/actions/community/getfirstcommunity";
-import CoursesSearchInput from "@/components/models/courses-search-input";
 import { getCoursesNameAndImage } from "@/actions/course/get-courses-image-name";
 import LogoutBtn from "./logoutbtn";
 import TeacherBtn from "./teacherbtn";
-import SearchModal from "./searchModal";
 import SearchModalTrigger from "./searchModlatrigger";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const StudentNavbar = async () => {
   const notifs = await getAllNotifications();
@@ -36,11 +33,14 @@ const StudentNavbar = async () => {
     user?.user.role == "TEACHER" && user?.user.teacherAccess;
   const firstconversationId = await getTheFirstConversation();
   const firstComunity = await getFirstCommunity();
-  const courses = await getCoursesNameAndImage();
+  // const courses = await getCoursesNameAndImage();
   return (
     <header className=" top-0 flex h-20 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden  gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6  lg:w-[2450px]">
-        <Logo />
+        <div className="w-[190px]">
+          <Logo />
+        </div>
+
         <div className="border-r-2 border-muted h-16"></div>
 
         <Link
@@ -64,14 +64,6 @@ const StudentNavbar = async () => {
           asChild
         >
           <Link href="/search">Browse Courses</Link>
-        </Button>
-        <Button
-          variant={"link"}
-          size={"sm"}
-          className="text-muted-foreground transition-colors hover:text-foreground"
-          asChild
-        >
-          <Link href="/live_metting">Live Meeting</Link>
         </Button>
 
         <Button
@@ -171,18 +163,31 @@ const StudentNavbar = async () => {
         </form>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
+            <Avatar className="rounded-full  cursor-pointer w-8 h-8">
+              <AvatarImage src={user?.user.image || ""} alt="User profile" />
+
+              <AvatarFallback>{user?.user?.name![0]}</AvatarFallback>
+            </Avatar>
+
+            {/* <Button variant="secondary" size="icon" className="rounded-full">
               <CircleUser className="h-5 w-5" />
               <span className="sr-only">Toggle user menu</span>
-            </Button>
+            </Button> */}
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <UserButton />
+            <DropdownMenuItem className="cursor-pointer">
+              <Link href="/setup-account">Profile</Link>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            {isverifiedteacher && <TeacherBtn />}
-            <DropdownMenuSeparator />
+            {isverifiedteacher && (
+              <>
+                <TeacherBtn />
+                <DropdownMenuSeparator />
+              </>
+            )}
+
             <LogoutBtn />
           </DropdownMenuContent>
         </DropdownMenu>

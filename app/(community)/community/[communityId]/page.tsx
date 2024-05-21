@@ -3,14 +3,10 @@ import { ComunityUser } from "../_componets/comunity-users";
 import ComunityPostList from "../_componets/comunity-posts-list";
 import CommunitySearchProblem from "../_componets/comunity-search-problem";
 import Message from "../_componets/message";
-import CommunityHeader from "../_componets/community-breadkrumb";
 import { getCommNameByid } from "@/actions/community/getCommunityName";
 import { MobileSidebar } from "@/app/(dashboard)/_components/mobilesidebar";
-import { UsersSidebar } from "../_componets/users-sidebar";
-import { ComunityList } from "../_componets/list-comunity";
-import { Categories } from "@/app/(dashboard)/(routes)/search/_components/categories";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { CategoriresForComuntiy } from "../_componets/categoriesforcomunity";
+import { auth } from "@/auth";
 interface getComuntyParams {
   category?: string;
 }
@@ -25,7 +21,7 @@ const Page = async (params: {
   const comunityId = extractedComunityIdandPostId[0];
   const postId = extractedComunityIdandPostId[1];
   const posts = await getPostsInCommunity(comunityId);
-  const communityName = await getCommNameByid(comunityId);
+
   return (
     <div className="max-h-full w-full">
       <div className="flex justify-between h-full w-full ">

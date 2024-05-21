@@ -50,7 +50,7 @@ export async function POST(req:Request)
                 studentNotif:true
             }
         })
-        console.log("sending data to pusher")
+        
          await pusherServer.trigger('notification', 'new-notification', {
             notification
         });

@@ -12,14 +12,13 @@ const TeachersSidebar = async () => {
     <div className="bg-white">
       <div className="text-center">
         <p className="text-2xl font-bold mb-8 mt-8">
-          Recommendation formateur for you
+          Find a teacher that suits you
         </p>
         <div className="mb-6">
           <span>
-            Here are a few Formateur we think you will liked base on here Rating
-            and Reviews
+            Start learning with a teacher that suits your learning style
             <br />
-            Other student with similar interest have found these courses helpful
+            and pace to help you improve your skills and knowledge in the best way possible for you 
           </span>
         </div>
       </div>

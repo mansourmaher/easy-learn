@@ -39,11 +39,17 @@ export default function CommunitySearchProblem() {
           value={message}
           onChange={handleChange}
         />
-        <Send
-          size={24}
-          className="text-blue-500 cursor-pointer"
+        <Button
+          disabled={!message}
           onClick={() => searchProblem(message)}
-        />
+          className="bg-blue-500 text-white p-2 rounded-lg hover:text-white"
+          variant={"outline"}
+        >
+          <Send
+            size={24}
+            className=" cursor-pointer disabled:cursor-not-allowed"
+          />
+        </Button>
       </div>
     </div>
   );

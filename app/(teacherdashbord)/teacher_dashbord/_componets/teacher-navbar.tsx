@@ -22,6 +22,7 @@ import { getTheFirstConversation } from "@/actions/conversation/getthefirstconve
 import { getteacherfirstconversation } from "@/actions/conversation/getteacherfirstconversation";
 import LogoutBtn from "@/app/(dashboard)/_components/logoutbtn";
 import StudetnBtn from "./studentbtn";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const TeacherNavbar = async () => {
   const notifs = await getAllNotifications();
@@ -31,7 +32,9 @@ const TeacherNavbar = async () => {
   return (
     <header className=" top-0 flex h-20 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden  gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6  lg:w-[1750px]">
-        <Logo />
+        <div className="w-[190px]">
+          <Logo />
+        </div>
         <div className="border-r-2 border-muted h-16"></div>
 
         <Link
@@ -135,16 +138,17 @@ const TeacherNavbar = async () => {
         <form className="ml-auto flex-1 sm:flex-initial"></form>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
-              <span className="sr-only">Toggle user menu</span>
-            </Button>
+            <Avatar className="rounded-full  cursor-pointer w-8 h-8">
+              <AvatarImage src={user?.user.image || ""} alt="User profile" />
+
+              <AvatarFallback>{user?.user?.name![0]}</AvatarFallback>
+            </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {/* <UserButton /> */}
-            <DropdownMenuItem >
+            <DropdownMenuItem>
               <Link href="/teacher/setup-account">Profile</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

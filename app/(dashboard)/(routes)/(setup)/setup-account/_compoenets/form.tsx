@@ -49,6 +49,7 @@ import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { FillInformation } from "@/actions/profile/fill-information";
+import { useRouter } from "next/navigation";
 
 interface StepsType {
   id: string;
@@ -204,6 +205,7 @@ export function SetUpAccountForm() {
       return updatedOptions;
     });
   };
+  const router=useRouter()
   const handelSubmit = async () => {
     setIsloading(true);
     const data = {
@@ -211,7 +213,7 @@ export function SetUpAccountForm() {
       optionSelected: optionSelected as string,
       imageUrl: imageUrl as string,
       country: origin as CountrySelectValue,
-      about: about as string,
+      about: setUpAccountForm.watch("bio"),
       subtitle: subtitle as string,
       patients: patiants as string[],
       linkedin: linkedin as string,
@@ -222,9 +224,14 @@ export function SetUpAccountForm() {
       .then((res) => {
         if (res.success) {
           toast.success("Profile Information Added Successfully");
+          
         } else {
           toast.error("Error Adding Profile Information");
         }
+       
+      })
+      .catch((error) => {
+        toast.error("Error Adding Profile Information");
       })
       .then(() => {
         setIsFinished(true);
@@ -250,8 +257,10 @@ export function SetUpAccountForm() {
                   className="flex w-full items-center border-l-4 border-blue-400 py-2 pl-4 md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4"
                   aria-current="step"
                 >
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary transition-colors group-hover:bg-primary/80">
-                    {step.icon && <step.icon className="h-4 w-4 text-white" />}
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-400 transition-colors group-hover:bg-primary/80">
+                    {step.icon && (
+                      <step.icon className="h-4 w-4 text-white bg-blue-400" />
+                    )}
                   </div>
 
                   <div className="flex flex-1 flex-col md:ml-4">
@@ -345,6 +354,9 @@ export function SetUpAccountForm() {
                               align="start"
                             >
                               <Calendar
+                                captionLayout="dropdown-buttons"
+                                fromYear={1900}
+                                toYear={new Date().getFullYear()}
                                 mode="single"
                                 selected={field.value}
                                 onSelect={(date) =>
@@ -401,7 +413,7 @@ export function SetUpAccountForm() {
                     <div>
                       <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 items-center">
-                          <Label>Expertise</Label>
+                          <Label>Skills</Label>
                           <Input
                             placeholder=""
                             value={patient}

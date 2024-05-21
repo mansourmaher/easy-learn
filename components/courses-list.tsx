@@ -1,6 +1,4 @@
-import { Category, Course } from "@prisma/client";
 import { CourseCard } from "./course-card";
-import Bannner from "./banner";
 import { getCourses } from "@/actions/course/get-courses";
 
 interface CoursesListProps {

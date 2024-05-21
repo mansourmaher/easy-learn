@@ -35,7 +35,9 @@ export default function ComunityPostList({
             {post.id !== postId && (
               <ComunityPostItem
                 post={post}
-                onchange={() => setPostToReply(post.id)}
+                onchange={() => {
+                  !posttoreply ? setPostToReply(post.id) : setPostToReply(null);
+                }}
                 postId={postId}
               />
             )}

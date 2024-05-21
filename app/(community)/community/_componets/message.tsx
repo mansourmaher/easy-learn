@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 
 interface MessageProps {
   communityId: string;
@@ -20,6 +21,7 @@ interface MessageProps {
 export default function Message({ communityId }: MessageProps) {
   const [image, setImage] = React.useState<string | null>(null);
   const [message, setMessage] = React.useState("");
+
   const handelAddPost = async (message: string, communityId: string) => {
     await addPostInCommunity(communityId, message, true, image!);
     setMessage("");
@@ -33,13 +35,14 @@ export default function Message({ communityId }: MessageProps) {
             <TooltipTrigger>
               <CommunityUploadImage
                 communityId={communityId}
-                onchange={(url) => setImage(url)}
+                onchange={(url) => {
+                  setImage(url);
+                  handelAddPost(message, communityId);
+                }}
               />
             </TooltipTrigger>
             <TooltipContent>
-              <p className="text-gray-600 dark:text-gray-300">
-                Image
-              </p>
+              <p className="text-gray-600 dark:text-gray-300">Image</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -53,11 +56,17 @@ export default function Message({ communityId }: MessageProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <Send
-          size={24}
-          className="text-blue-500 cursor-pointer"
+        <Button
+          disabled={!message}
           onClick={() => handelAddPost(message, communityId)}
-        />
+          className="bg-blue-500 text-white p-2 rounded-lg hover:text-white"
+          variant={"outline"}
+        >
+          <Send
+            size={24}
+            className="cursor-pointer disabled:cursor-not-allowed"
+          />
+        </Button>
       </div>
     </div>
   );

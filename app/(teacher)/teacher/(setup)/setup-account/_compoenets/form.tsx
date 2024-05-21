@@ -404,7 +404,9 @@ export function SetUpAccountForm() {
                     <div>
                       <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 items-center">
-                          <Label>Expertise</Label>
+                          <Label>
+                            Skills
+                          </Label>
                           <Input
                             placeholder=""
                             value={patient}

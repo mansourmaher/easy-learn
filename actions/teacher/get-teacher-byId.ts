@@ -23,7 +23,9 @@ export async function getTeacherById(teacherId: string) {
   })
   const totlaCourse=await db.course.count({
     where:{
-      userId:teacherId
+      userId:teacherId,
+      isPublished:true,
+      
     }
   })
   const avgReview=await getTeacherRating(teacherId)

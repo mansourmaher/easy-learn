@@ -4,6 +4,7 @@ import { CoursesList } from "@/components/courses-list";
 import TopThreeCourses from "./_components/top-three-courses";
 import MenuBar from "./_components/menu-bar";
 import Bannner from "@/components/banner";
+import PriceFilter from "@/components/pricefilter";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ interface getCoursesParams {
   category?: string;
   teacher?: string;
   level?: string;
+  price?: string;
 }
 
 interface SearchPageProps {
@@ -24,10 +26,8 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     category: searchParams.category!,
     teacher: searchParams.teacher!,
     level: searchParams.level!,
-  })
-
-  
-  
+    price: searchParams.price!,
+  });
 
   return (
     <>
@@ -43,6 +43,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
           <>
             <Bannner title="Are you interested in learning something new? lets register and start learning" />
             <MenuBar />
+            <PriceFilter />
             <CoursesList items={courses} />
           </>
         )}

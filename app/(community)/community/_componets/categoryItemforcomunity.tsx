@@ -44,11 +44,13 @@ export const CategoryItemforComunty = ({
   const comunityIdInthepathname = pathname.split("/")[2];
   const router = useRouter();
   const searchParams = useSearchParams();
+  const communtyIdwhenUrlcontainsPost =
+    comunityIdInthepathname.split("post")[0];
 
   const currentCategory = searchParams.get("category");
   const currenTitle = searchParams.get("title");
 
-  const isSelected = comunityIdInthepathname === commId[0].id;
+  const isSelected = communtyIdwhenUrlcontainsPost === commId[0].id;
   const onClick = () => {
     router.push(`/community/${commId[0].id}`);
   };

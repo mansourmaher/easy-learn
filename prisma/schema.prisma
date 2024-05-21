@@ -337,6 +337,7 @@ model Notifications {
   chapterId    String?
   createdAt    DateTime @default(now())
   isRead       Boolean  @default(false)
+  distination  String?
 }
 
 model Community {

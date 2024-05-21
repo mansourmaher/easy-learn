@@ -33,7 +33,7 @@ export const register=async(values:z.infer<typeof RegisterSchema>)=>
 
     if(newUser.role==="TEACHER" && !values.url && !values.filename)
     {
-        return {error:"Please provide a url and filename"}
+        return {error:"Please provide a document to verify your identity"}
     }
     if(newUser.role==="TEACHER")
         {

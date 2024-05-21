@@ -1,7 +1,9 @@
+import { Notifications } from '@prisma/client';
 "use server"
 
 import { auth } from "@/auth"
 import { db } from "@/lib/db"
+import { pusherServer } from '@/lib/pusher';
 
 
 
@@ -36,6 +38,43 @@ export async function startprivatecoursemeting(id:string)
             link:id
         }
     })
+    const courseowner=await db.course.findFirst({
+        where:{
+            id:id
+        },
+        select:{
+            user:true,
+            title:true
+        }
+    })
+    const usersshouldbenotified=await db.courseUser.findMany({
+        where:{
+            courseId:id
+        },
+        select:{
+            userId:true
+        }
+    })
+    usersshouldbenotified.forEach(async (element) => {
+        const notification= await db.notifications.create({
+            data:{
+                teacher:element.userId,
+                student:user?.user.id as string,
+                message:`${user?.user.name} has started a meeting for ${courseowner?.title} course`,
+                distination:meet.link,
+            },
+            include:{
+                user:true,
+                studentNotif:true
+            }
+        })
+       
+         await pusherServer.trigger('notification', 'new-notification', {
+            notification
+        });
+    });
+  
+
     return meet
 
 }

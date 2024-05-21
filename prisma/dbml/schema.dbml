@@ -296,6 +296,7 @@ Table Notifications {
   chapterId String
   createdAt DateTime [default: `now()`, not null]
   isRead Boolean [not null, default: false]
+  distination String
 }
 
 Table Community {

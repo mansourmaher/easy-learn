@@ -1,5 +1,6 @@
 import { auth } from "@/auth"
 import { db } from "@/lib/db"
+import { pusherServer } from "@/lib/pusher"
 import { stripe } from "@/lib/stripe"
 import { NextResponse } from "next/server"
 import Stripe from "stripe"
@@ -95,6 +96,21 @@ export async function POST(req:Request,{params}:{params:{courseId:string}}):  Pr
                 }
             }
         })
+        const notification= await db.notifications.create({
+            data:{
+                teacher:course?.userId!,
+                student:user.user.id as string,
+                message:`${user?.user.name} has purchased ${course?.title} course`
+            },
+            include:{
+                user:true,
+                studentNotif:true
+            }
+        })
+         await pusherServer.trigger('notification', 'new-notification', {
+            notification
+        });
+
         
         return NextResponse.json({
             url:session.url
