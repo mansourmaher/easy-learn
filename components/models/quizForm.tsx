@@ -43,6 +43,7 @@ interface ConfirmModelProps {
   hasreport: boolean;
   isCompltedthechapter: boolean;
   studentshouldreport: boolean;
+  isPurchased: boolean;
 }
 
 export const QuizForm = ({
@@ -51,6 +52,7 @@ export const QuizForm = ({
   hasreport,
   isCompltedthechapter,
   studentshouldreport,
+  isPurchased,
 }: ConfirmModelProps) => {
   const {
     register,
@@ -244,7 +246,7 @@ export const QuizForm = ({
           <AlertDialogDescription>
             <div className="mb-6 mt-6">
               {/* <Stepper steps={quiz} currentStep={questionIndex + 1}  isFalse={isFalse} /> */}
-              {isloading ? (
+              {isloading &&!isCompltedthechapter ? (
                 <div className="flex flex-col items-center justify-center">
                   <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
                   <h1>Loading...</h1>
@@ -256,7 +258,7 @@ export const QuizForm = ({
                 </div>
               ) : null}
             </div>
-            {cureentQuestion ? (
+            {cureentQuestion && !isCompltedthechapter ? (
               <div>
                 <div>
                   <h1
@@ -342,6 +344,7 @@ export const QuizForm = ({
                   chapterId={chapterId}
                   courseId={courseId}
                   mustUploadwork={!hasreport && correctAnswer > wrongAnswer}
+                  isPurchased={isPurchased}
                 />
               </>
             ) : null}

@@ -52,6 +52,8 @@ export const CourseSideBar = async ({ courseId }: CourseSideBarProps) => {
 
   const userProgress = await getProgress(userId, course?.id);
 
+  const blockchapter = course.price! > 0 && !courseUser;
+
   return (
     <div className="h-full border-r flex flex-col overflow-y-auto shadow-sm">
       <div className="pl-4 pt-3 flex flex-col border-b  ">
@@ -123,7 +125,7 @@ export const CourseSideBar = async ({ courseId }: CourseSideBarProps) => {
               isCompleted={chpaters.userProgress?.[0]?.isCompleted}
               courseId={course.id}
               isLocked={!chpaters.isFree}
-              isPurchased={!!courseUser}
+              isPurchased={blockchapter}
               description={chpaters.descreption!}
             />
           ))}

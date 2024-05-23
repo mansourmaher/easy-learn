@@ -49,7 +49,7 @@ export const login=async(values:z.infer<typeof LoginSchema>)=>
             return {success:"Logged in"}
         }
         else if(existingUser.role ==="STUDENT")
-            { await signIn('credentials',{email,password,redirectTo:"/"})
+            { await signIn('credentials',{email,password,redirectTo:"/home"})
         
         return {success:"Logged in"}}
         else if(existingUser.role==="ADMIN")

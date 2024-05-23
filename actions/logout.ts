@@ -4,10 +4,10 @@ import { signOut } from "@/auth";
 
 export  const  logout=async()=>
 {
-    console.log("logout")
+    
      await signOut()
      //try to redirect to login page
-      return {redirect: { destination: '/sign-in', permanent: false }}
+      return {redirect: { destination: '/', permanent: false }}
 
     
 }

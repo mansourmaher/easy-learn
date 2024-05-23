@@ -14,6 +14,23 @@ export const markAsComplete = async (chapterId:string,courseId:string) => {
     const user=await auth()
     const userId=user?.user.id as string
 
+    const existingcourseuser=await db.courseUser.findFirst({
+        where:{
+            userId:userId,
+            courseId:courseId
+        }
+    })
+    if(!existingcourseuser)
+        {
+            const newcourseuser=await db.courseUser.create({
+                data:{
+                    userId:userId,
+                    courseId:courseId,
+                    status:"In progress"
+                }
+            })
+        }
+
     
     const userProgress=await db.userProgress.create({
         data:{
@@ -25,7 +42,7 @@ export const markAsComplete = async (chapterId:string,courseId:string) => {
         })
 
         const userProgression=await getProgress(userId,courseId)
-        console.log("userProgression",userProgression)
+        
 
         if (userProgression===100)
 {

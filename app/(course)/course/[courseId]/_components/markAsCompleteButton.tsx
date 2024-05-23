@@ -12,12 +12,14 @@ interface markAsCompleteButtonProps {
   chapterId: string;
   courseId: string;
   mustUploadwork?: boolean;
+  isPurchased: boolean;
 }
 
 export default function MarkAsCompleteButton({
   disabled,
   courseId,
   mustUploadwork,
+  isPurchased,
 
   chapterId,
 }: markAsCompleteButtonProps) {
@@ -30,7 +32,7 @@ export default function MarkAsCompleteButton({
 
   return (
     <div>
-      <Button disabled={disabled} onClick={() => onclick(chapterId)}>
+      <Button disabled={disabled || !isPurchased} onClick={() => onclick(chapterId)}>
         {mustUploadwork ? "Upload your work" : "Mark as complete"}
       </Button>
     </div>

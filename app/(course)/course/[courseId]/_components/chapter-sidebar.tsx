@@ -31,14 +31,14 @@ export const ChapterSidebarItem = ({
           onClick={() => router.push(`/course/${courseId}/chapter/${id}`)}
           size={"lg"}
           className="   bg-white text-gray-800  border-gray-200 hover:border-gray-300 hover:shadow-md hover:bg-slate-200/80 transition-all duration-200 ease-in-out  border-radius-2xl   rounded-full border w-full "
-          disabled={isLocked && !isPurchased}
+          disabled={isLocked && isPurchased}
         >
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center">
-              {isLocked && !isPurchased && (
+              {isLocked && isPurchased && (
                 <LockKeyhole className="text-gray-500" size={24} />
               )}
-              {isLocked && isPurchased && (
+              {isLocked && !isPurchased && (
                 <Eye className="text-sky-500" size={24} />
               )}
               {!isLocked && (

@@ -16,9 +16,10 @@ import { studentShouldreport } from "@/actions/chapter/studentshouldreportsomthi
 interface ChapterPageProps {
   courseId: string;
   chapterId: string;
+  isPurchased: boolean;
 }
 
-const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
+const SingleChapterPage = async ({ courseId, chapterId,isPurchased }: ChapterPageProps) => {
   const courseName = await db.course.findUnique({
     where: {
       id: courseId,
@@ -30,12 +31,12 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
   });
 
   const chapter = await getChapterById(chapterId);
+  if (!chapter) return null;
 
   const existingReport = await hasReportChapter(chapterId);
   const user = await auth();
   const userId = user?.user.id as string;
-  const studentshouldreport=await studentShouldreport(chapterId)
-  
+  const studentshouldreport = await studentShouldreport(chapterId);
 
   const isCompltedthechapter = await db.userProgress.findFirst({
     where: {
@@ -62,11 +63,13 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
           />
         </div>
         <div className="col-span-2 items-center md:col-span-1">
-          <ChapterReport
-            chapterId={chapterId}
-            courseId={courseId}
-            existingReport={existingReport}
-          />
+          <div className="justify-center">
+            <ChapterReport
+              chapterId={chapterId}
+              courseId={courseId}
+              existingReport={existingReport}
+            />
+          </div>
 
           <div className="h-[280px]  mb-8 ">
             <ScrollArea className="h-[280px]">
@@ -82,7 +85,7 @@ const SingleChapterPage = async ({ courseId, chapterId }: ChapterPageProps) => {
         courseId={courseId}
         isCompltedthechapter={isCompltedthechapter?.isCompleted!}
         studentshouldreport={studentshouldreport}
-        
+        isPurchased={isPurchased}
       />
       <hr className="m-8 mt-12" />
       <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-6">

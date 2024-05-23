@@ -35,7 +35,7 @@ export default function ChapterReport({
     router.refresh();
   };
   return (
-    <div className="">
+    <div className="justify-center items-center flex flex-col">
       <div className="max-w-sm   bg-white rounded-lg shadow-md">
         <div className="flex justify-between px-5 py-4 border-b">
           <h3 className="text-lg font-semibold">Votre devoir</h3>

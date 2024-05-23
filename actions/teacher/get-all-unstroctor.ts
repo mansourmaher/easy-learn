@@ -11,7 +11,7 @@ import { getTotalPurchaseByteacherId } from "./get-total-purchase";
 export async function getAllUnstroctor(name:string | null){
 
     const teachers=await db.course.findMany({
-          distinct:["userId"],
+           distinct:["userId"],
         //   where:{
         //     isPublished:true
         //   },
