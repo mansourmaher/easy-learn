@@ -46,7 +46,7 @@ const ChapterPage = async ({
 
 export default ChapterPage;
 
-export function UnothorizeState() {
+function UnothorizeState() {
   return (
     <div className="flex h-screen my-auto flex-col items-center justify-center gap-2">
       <GhostIcon className="h-16 w-16 text-muted-foreground" />
@@ -59,7 +59,7 @@ export function UnothorizeState() {
     </div>
   );
 }
-export function NoChapterFound() {
+function NoChapterFound() {
   return (
     <div className="flex h-screen  flex-col items-center justify-center gap-2">
       <GhostIcon className="h-16 w-16 text-muted-foreground" />
