@@ -37,7 +37,7 @@ function CourseCarousel({ teachers }: SingleUnstructorsPageProps) {
     api.on("scroll", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
-  }, [api,current]);
+  }, [api, current]);
 
   return (
     <>

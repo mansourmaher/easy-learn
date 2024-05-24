@@ -6,7 +6,7 @@ import React from 'react'
 function StudetnBtn() {
     const router = useRouter();
   return (
-    <DropdownMenuItem onClick={() => router.push("/")}>
+    <DropdownMenuItem onClick={() => router.push("/home")}>
       Switch to Student
     </DropdownMenuItem>
   );

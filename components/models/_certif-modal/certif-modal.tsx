@@ -13,6 +13,7 @@ import { db } from "@/lib/db";
 import { getCourseUser } from "@/actions/system/get-courseUser";
 import Image from "next/image";
 import { format } from "date-fns";
+import { BiCertification } from "react-icons/bi";
 
 interface CertifModalProps {
   courseUser: Awaited<ReturnType<typeof getCourseUser>>;
@@ -42,8 +43,8 @@ export default function CertifModal({ courseUser }: CertifModalProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <span className=" text-white bg-sky-500 px-1 py-1 rounded-md cursor-pointer">
-                  Ceritficate
+                <span className=" text-white bg-sky-500 px-1 py-1 rounded-md cursor-pointer flex items-center space-x-2">
+                  <BiCertification size="18" /> <span>Certificate</span>
                 </span>
               </TooltipTrigger>
               <TooltipContent>

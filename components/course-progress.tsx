@@ -1,7 +1,4 @@
-"use client";
-import { getProgress } from "@/actions/course/get-progress";
-import React, { useEffect, useState } from "react";
-import { Progress } from "./ui/progress";
+
 import { cn } from "@/lib/utils";
 import { CiTrophy } from "react-icons/ci";
 

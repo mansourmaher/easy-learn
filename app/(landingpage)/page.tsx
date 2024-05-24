@@ -1,7 +1,8 @@
-
+import Bannner from "@/components/banner";
 import { Logo } from "../(dashboard)/_components/logo";
 import CarouselFetchDta from "./_compoents/carouselfetchdata";
 import CourseCarousel from "./_compoents/coursecarousel";
+import CourseCarouselFetchdata from "./_compoents/coursecarouselfetchdata";
 import JoinBtn from "./_compoents/joinbtn";
 
 function Page() {
@@ -323,6 +324,10 @@ function Page() {
             </div>
           </div>
         </div>
+        {/* @ts-ignore */}
+        <CourseCarouselFetchdata />
+        <Bannner title="Ready to learn something new? Register now and connect with our expert teachers!" />
+
         <CarouselFetchDta />
 
         <div className="">

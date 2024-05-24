@@ -154,7 +154,7 @@ const TeacherNavbar = async () => {
             <DropdownMenuSeparator />
             <StudetnBtn />
             <DropdownMenuSeparator />
-            <DropdownMenuSeparator />
+
             <LogoutBtn />
           </DropdownMenuContent>
         </DropdownMenu>

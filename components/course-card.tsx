@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, DollarSign, Eye } from "lucide-react";
@@ -36,7 +35,7 @@ export const CourseCard = async ({
 }: CourseCardProps) => {
   const user = await auth();
   const userId = user?.user.id as string;
-  const existingpurchase=await existingPurchase(id)
+  const existingpurchase = await existingPurchase(id);
 
   return (
     <div className="p-4 bg-white flex flex-col border rounded-lg">
