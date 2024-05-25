@@ -16,7 +16,7 @@ export default function TeacherListSidebar({
 }: TeacherListSidebarProps) {
   const [searchValue, setSearchValue] = React.useState("");
 
-  const filteredTeachers = teachers.filter((teacher) =>
+  const filteredTeachers = teachers?.filter((teacher) =>
     teacher?.name!.toLowerCase().includes(searchValue.toLowerCase())
   );
 
@@ -36,7 +36,7 @@ export default function TeacherListSidebar({
       </div>
       <div className="flex flex-col space-y-8  ml-2  h-[550px] overflow-y-scroll">
         <ScrollArea>
-          {filteredTeachers.map((teacher, index) => (
+          {filteredTeachers?.map((teacher, index) => (
             <div key={index}>
               <TecaherListItem teacher={teacher} />
             </div>
