@@ -11,7 +11,7 @@ import React from "react";
 import ContinueToprofileBtn from "./continuetoprofilebtn";
 
 interface UnstroctorCardProps {
-  teachers: Awaited<ReturnType<typeof getAllteachers>>[0];
+  teachers: any;
   index: number;
 }
 
