@@ -5,7 +5,6 @@ import ReveiwItem from "./reviewitem";
 
 export const FetchSometeacherReveiw = async () => {
   const somereview = await fetchSometeacherReveiwforme();
-  console.log(somereview);
 
   return (
     <div className="flex flex-col">

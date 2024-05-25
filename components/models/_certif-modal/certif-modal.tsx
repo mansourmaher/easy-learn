@@ -43,7 +43,7 @@ export default function CertifModal({ courseUser }: CertifModalProps) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <span className=" text-white bg-sky-500 px-1 py-1 rounded-md cursor-pointer flex items-center space-x-2">
+                <span className=" text-white bg-green-400 px-1 py-1 rounded-md cursor-pointer flex items-center space-x-2">
                   <BiCertification size="18" /> <span>Certificate</span>
                 </span>
               </TooltipTrigger>

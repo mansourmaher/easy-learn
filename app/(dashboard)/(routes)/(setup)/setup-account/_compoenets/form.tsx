@@ -50,6 +50,8 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { FillInformation } from "@/actions/profile/fill-information";
 import { useRouter } from "next/navigation";
+import filiers from "@/data/filiers";
+import Select from "react-select";
 
 interface StepsType {
   id: string;
@@ -139,6 +141,8 @@ export function SetUpAccountForm() {
   const [github, setGithub] = useState<string>(initialgithub);
   const [twitter, setTwitter] = useState<string>(initialtwitter);
 
+  const filierOptions = filiers;
+
   const setUpAccountForm = useForm<SetupAccountSchemaType>({
     resolver: zodResolver(setupAccountSchema),
     defaultValues: {
@@ -205,7 +209,7 @@ export function SetUpAccountForm() {
       return updatedOptions;
     });
   };
-  const router=useRouter()
+  const router = useRouter();
   const handelSubmit = async () => {
     setIsloading(true);
     const data = {
@@ -224,11 +228,9 @@ export function SetUpAccountForm() {
       .then((res) => {
         if (res.success) {
           toast.success("Profile Information Added Successfully");
-          
         } else {
           toast.error("Error Adding Profile Information");
         }
-       
       })
       .catch((error) => {
         toast.error("Error Adding Profile Information");
@@ -240,7 +242,7 @@ export function SetUpAccountForm() {
   };
 
   return (
-    <section className="absolute inset-0 flex flex-col justify-between px-56 pt-32">
+    <section className=" flex flex-col justify-between px-56 pt-20">
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
           {steps.map((step, index) => (
@@ -332,7 +334,7 @@ export function SetUpAccountForm() {
                                 id="birthdate"
                                 variant={"outline"}
                                 className={cn(
-                                  "text-left font-normal",
+                                  "text-left font-normal border-muted border",
                                   !field.value && "text-muted-foreground"
                                 )}
                               >
@@ -350,7 +352,7 @@ export function SetUpAccountForm() {
                               </Button>
                             </PopoverTrigger>
                             <PopoverContent
-                              className="w-auto p-0"
+                              className="w-auto p-0 "
                               align="start"
                             >
                               <Calendar
@@ -394,7 +396,30 @@ export function SetUpAccountForm() {
                   />
                 </div>
 
-                <div className="sm:col-span-3"></div>
+                <div className="mt-2 sm:col-span-3">
+                  <Label>Field of Study (Filier)</Label>
+                  <Select
+                    options={filierOptions}
+                    placeholder="Select your filier"
+                    className="border-none border"
+                    value={
+                      filierOptions.find(
+                        (option) => option.value === initailFilierValue
+                      ) || null
+                    }
+                    onChange={(value) => {
+                      setInitailFilierValue(value?.value as string);
+                      setOptionSelected(value?.value as string);
+                    }}
+                    formatOptionLabel={(option) => {
+                      return (
+                        <div>
+                          <div>{option.option}</div>
+                        </div>
+                      );
+                    }}
+                  />
+                </div>
                 <div className="sm:col-span-3">
                   <div className="flex flex-col gap-6">
                     <div className="items-center justify-center gap-x-3">

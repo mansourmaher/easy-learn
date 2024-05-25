@@ -3,7 +3,7 @@ import { SetUpAccountForm } from "./_compoenets/form";
 
 function Page() {
   return (
-    <div>
+    <div className="">
       <SetUpAccountForm />
     </div>
   );

@@ -32,7 +32,6 @@ const CourseInProgressCard = async ({
           {etudiantgetycourses.progress === 100 ? (
             <CertifModal courseUser={courseuser} />
           ) : (
-            
             <ContinueBtn courseid={etudiantgetycourses.course.id} />
           )}
         </div>
@@ -43,9 +42,12 @@ const CourseInProgressCard = async ({
           <span className="text-sm text-muted-foreground mt-1.5  line-clamp-3 h-14 mb-6">
             {etudiantgetycourses.course.description}
           </span>
-          <div className="bg-gray-200 p-6 rounded-xl">
+          <div className="bg-gray-200 p-6 rounded-xl flex space-x-1">
             {" "}
-            <Progress value={etudiantgetycourses.progress} className="w-full" />
+            <Progress value={etudiantgetycourses.progress} className="" />
+            <span className="text-sm text-muted-foreground flex">
+              {etudiantgetycourses.progress}%
+            </span>
           </div>
         </div>
       </CardContent>

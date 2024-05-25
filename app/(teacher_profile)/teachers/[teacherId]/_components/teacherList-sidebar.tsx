@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllUnstroctor } from "@/actions/teacher/get-all-unstroctor";
+import { getAllUnstroctor, getAllteachers } from "@/actions/teacher/get-all-unstroctor";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import React from "react";
 import TecaherListItem from "./teacher-list-item";
@@ -8,7 +8,7 @@ import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface TeacherListSidebarProps {
-  teachers: Awaited<ReturnType<typeof getAllUnstroctor>>;
+  teachers: Awaited<ReturnType<typeof getAllteachers>>;
 }
 
 export default function TeacherListSidebar({
@@ -17,7 +17,7 @@ export default function TeacherListSidebar({
   const [searchValue, setSearchValue] = React.useState("");
 
   const filteredTeachers = teachers.filter((teacher) =>
-    teacher.user?.name!.toLowerCase().includes(searchValue.toLowerCase())
+    teacher?.name!.toLowerCase().includes(searchValue.toLowerCase())
   );
 
   return (

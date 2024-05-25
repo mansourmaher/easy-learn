@@ -1,4 +1,4 @@
-import { getAllUnstroctor } from "@/actions/teacher/get-all-unstroctor";
+import { getAllUnstroctor, getAllteachers } from "@/actions/teacher/get-all-unstroctor";
 import React from "react";
 import TecaherListItem from "./teacher-list-item";
 import { SearchIcon } from "lucide-react";
@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import TeacherListSidebar from "./teacherList-sidebar";
 
 const TeachersSidebar = async () => {
-  const teachers = await getAllUnstroctor(null);
+  const teachers = await getAllteachers(null);
   return (
     <div className="bg-white">
       <div className="text-center">
