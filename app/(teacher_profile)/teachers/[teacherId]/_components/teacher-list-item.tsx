@@ -9,7 +9,7 @@ import { Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface TeacherListItemProps {
-  teacher: Awaited<ReturnType<typeof getAllteachers>>[0];
+  teacher: any;
 }
 
 export default function TecaherListItem({ teacher }: TeacherListItemProps) {
