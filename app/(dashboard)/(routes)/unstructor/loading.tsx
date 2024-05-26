@@ -5,94 +5,127 @@ import React from "react";
 
 export default function Loading() {
   return (
-    <div className="m-8">
-      <p className="text-2xl font-bold mb-8">Recommendation Teacher for you</p>
-      <div className="mb-6">
-        <span>
-          Here are a few Formateur we think you will liked base on here Rating
-          and Reviews
-          <br />
-          Other student with similar interest have found these courses helpful
-        </span>
-      </div>
-      <div className="mx-16">
-        <div className="grid grid-cols-3  gap-8 mt-12">
-          {new Array(6).fill(0).map((_, i) => (
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 "
-              key={i}
-            >
-              <Card className="w-[250px] hover:bg-slate-100 cursor-pointer animate-plus">
-                <CardContent>
-                  <div className="flex   justify-end">
-                    {i === 0 && (
-                      <img
-                        // the path=C:\Users\HP\Desktop\PFE\lms-app-2\public\firstmeaille.jpg
-                        src="/firstmeaille.jpg"
-                        width={50}
-                        height={50}
-                        alt="first"
-                        loading="lazy"
-                      />
-                    )}
-                    {i === 1 && (
-                      <img
-                        // the path=C:\Users\HP\Desktop\PFE\lms-app-2\public\firstmeaille.jpg
-                        src="/secondmeaille.jpg"
-                        width={50}
-                        height={50}
-                        alt="first"
-                        loading="lazy"
-                      />
-                    )}
-                    {i === 2 && (
-                      <img
-                        // the path=C:\Users\HP\Desktop\PFE\lms-app-2\public\firstmeaille.jpg
-                        src="/thirdmeaille.jpg"
-                        width={50}
-                        height={50}
-                        alt="first"
-                        loading="lazy"
-                      />
-                    )}
-                    {i > 2 && (
-                      <img
-                        // the path=C:\Users\HP\Desktop\PFE\lms-app-2\public\firstmeaille.jpg
-                        src="/stars.jpg"
-                        width={50}
-                        height={50}
-                        alt="first"
-                        loading="lazy"
-                      />
-                    )}
-                  </div>
-                  <div className="flex flex-col items-center space-y-2">
-                    <Avatar className="w-40 h-40 p-2">
-                      <AvatarImage
-                        alt="Profile picture"
-                        src={"/avatar.png"}
-                        loading="lazy"
-                      />
-                    </Avatar>
-                    <div className="text-center">
-                      <p className="text-lg font-semibold"></p>
-                      <p className="text-sm text-gray-600"></p>
-                      <div className="flex items-center mt-1 justify-between m-1 gap-x-10">
-                        <div className="flex items-center space-x-1">
-                          <StarIcon className="text-yellow-400" />
-                          <p className="text-sm font-medium ml-1">5.0/5.0</p>
-                        </div>
-                        <div> Reviews</div>
-                      </div>
-
-                      <p className="text-sm">participants</p>
-                      <p className="text-sm"> cours</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+    <div className="mx-auto max-w-7xl p-4">
+      <div className="p-4 bg-zinc-100 dark:bg-zinc-800 animate-pulse">
+        <div className="mb-4 p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+          <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4 mb-2"></div>
+          <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+        </div>
+        <div className="mb-4 p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md flex items-center space-x-4">
+          <div className="h-6 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+          <div className="h-6 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+          <div className="h-6 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+          <div className="h-6 bg-blue-200 rounded w-1/4"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
             </div>
-          ))}
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
+            </div>
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
+            </div>
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
+            </div>
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
+            </div>
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
+          <div className="p-4 bg-white dark:bg-zinc-700 rounded-lg shadow-md">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-600"></div>
+              <div className="flex-1 space-y-4 py-1">
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-3/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/2"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-1/4"></div>
+                <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-2/3"></div>
+              </div>
+              <div className="h-6 bg-blue-200 rounded w-16"></div>
+            </div>
+            <div className="flex items-center space-x-2 mt-4">
+              <div className="h-4 bg-yellow-100 dark:bg-yellow-600 rounded w-8"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-16"></div>
+              <div className="h-4 bg-green-100 dark:bg-green-600 rounded w-20"></div>
+              <div className="h-4 bg-zinc-200 dark:bg-zinc-600 rounded w-12"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
