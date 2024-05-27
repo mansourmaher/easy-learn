@@ -44,7 +44,7 @@ export default function PdfNote({ id, note, grade }: FormProps) {
   const [successMessage, setSuccessMessage] = useState(null);
 
   const [souldBerefresh, setSouldBerefresh] = useState(false);
-  const [initilagrade, setInitilagrade] = useState(note);
+  const [initilagrade, setInitilagrade] = useState(grade);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({

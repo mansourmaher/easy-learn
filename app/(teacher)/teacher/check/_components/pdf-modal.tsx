@@ -54,6 +54,7 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
   const [initilagrade, setInitilagrade] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
+      alert("fetching data");
       const res = await getReportById(id);
       setNote(res?.note as string);
       setGrade(res?.grade as number);
@@ -150,7 +151,7 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
                 </Button>
               </div>
 
-              <PdfNote id={id} note={note} grade={grade} />
+              <PdfNote id={id} note={note} grade={grade} /> {note} with grade{" "}
               <div className="space-x-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

@@ -27,20 +27,18 @@ export async function POST(req:Request)
             }
                 
              })
-             
-             const existingscore=await db.courseUser.findUnique({
+             const allreportforcourse=await db.report.findMany({
                 where:{
-                    userId_courseId:{
-                        courseId:createCompteRendu.courseId,
-                        userId:createCompteRendu.userId
-                    }
-                    
+                    courseId:createCompteRendu.courseId
                 },
                 select:{
-                    score:true
+                    grade:true
                 }
             })
-            const scoretoadd=grade-initilagrade
+            const totalgrade=allreportforcourse.reduce((acc,curr)=>acc+curr.grade!,0)
+
+             
+             
             
            
              const updatescore=await db.courseUser.update({
@@ -51,7 +49,7 @@ export async function POST(req:Request)
                     }
                 },
                 data:{
-                    score:existingscore?.score!+scoretoadd
+                    score:totalgrade
                 }
             }
             )
