@@ -44,9 +44,7 @@ export default function PdfNote({ id }: FormProps) {
   const [grade, setGrade] = useState(0);
   const [souldBerefresh, setSouldBerefresh] = useState(false);
   const [initilagrade, setInitilagrade] = useState(0);
-  const router=useRouter()
-
-  
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,20 +62,18 @@ export default function PdfNote({ id }: FormProps) {
   }, [id, souldBerefresh]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-   
     await axios
       .post("/api/teacher/keepNote", {
         reportId: id,
         grade: values.grade,
         note: values.note,
         initilagrade: initilagrade,
-        
       })
       .then((res) => {
         setSuccessMessage(res.data.message);
         setSouldBerefresh(!souldBerefresh);
       });
-      router.refresh()
+    router.refresh();
   };
   return (
     <Dialog
@@ -108,7 +104,7 @@ export default function PdfNote({ id }: FormProps) {
                   <FormDescription>
                     <span>
                       This note will be visible to the student when they open
-                      the document.
+                      the document. {note} with grade {grade}
                     </span>
                   </FormDescription>
                   <FormMessage />
