@@ -62,6 +62,7 @@ export default function PdfNote({ id }: FormProps) {
   }, [id, souldBerefresh]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(values.grade, values.note, initilagrade);
     await axios
       .post("/api/teacher/keepNote", {
         reportId: id,
