@@ -52,13 +52,16 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
   const [grade, setGrade] = useState(0);
   const [souldBerefresh, setSouldBerefresh] = useState(false);
   const [initilagrade, setInitilagrade] = useState(0);
+  const [isfetching, setIsfetching] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setIsfetching(true);
       alert("fetching data");
       const res = await getReportById(id);
       setNote(res?.note as string);
       setGrade(res?.grade as number);
       setInitilagrade(res?.grade as number);
+      setIsfetching(false);
     };
     fetchData();
   }, [id, souldBerefresh]);
@@ -150,8 +153,9 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
                   <ChevronUp className="w-5 h-5 transform rotate-180" />
                 </Button>
               </div>
-
-              <PdfNote id={id} note={note} grade={grade} /> {note} with grade{" "}
+              <PdfNote id={id} note={note} grade={grade} /> 
+              {isfetching && <Loader2 className="h-6 w-6 animate-spin" />}
+              {note} with grade{" "}
               <div className="space-x-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
