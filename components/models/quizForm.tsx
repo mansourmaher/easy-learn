@@ -76,7 +76,7 @@ export const QuizForm = ({
   const [isloading, setIsloading] = useState(true);
 
   const btnShouldbediabled = () => {
-    if ((studentshouldreport && !hasreport) || correctAnswer < wrongAnswer) {
+    if ((studentshouldreport && !hasreport) || correctAnswer < wrongAnswer || !dipslayResult) {
       return true;
     }
 
@@ -200,7 +200,7 @@ export const QuizForm = ({
             <span>Start Quiz</span>
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="max-w-[40%]">
+        <AlertDialogContent className="max-w-full md:max-w-[50%] ">
           <div className="flex flex-row justify-between">
             <AlertDialogTitle>Quizzes for Your Chapter</AlertDialogTitle>
             <div className="flex flex-row gap-3">
@@ -246,7 +246,7 @@ export const QuizForm = ({
           <AlertDialogDescription>
             <div className="mb-6 mt-6">
               {/* <Stepper steps={quiz} currentStep={questionIndex + 1}  isFalse={isFalse} /> */}
-              {isloading &&!isCompltedthechapter ? (
+              {isloading && !isCompltedthechapter ? (
                 <div className="flex flex-col items-center justify-center">
                   <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"></div>
                   <h1>Loading...</h1>
@@ -299,8 +299,9 @@ export const QuizForm = ({
           <AlertDialogFooter>
             {!isCompltedthechapter ? (
               <>
-                <AlertDialogCancel>Close</AlertDialogCancel>
+                {/* <AlertDialogCancel>Close</AlertDialogCancel> */}
                 <Button
+                  variant={"ghost"}
                   disabled={questionIndex === quiz.length}
                   onClick={() => {
                     setQuestionIndex((prevIndex) =>
@@ -312,6 +313,7 @@ export const QuizForm = ({
                 </Button>
 
                 <Button
+                  variant={"outline"}
                   onClick={() => {
                     setQuestionIndex(0);
                     setCorrectAnswer(0);
@@ -324,6 +326,7 @@ export const QuizForm = ({
                   Restart
                 </Button>
                 <Button
+                  variant={"green"}
                   disabled={
                     questionIndex === quiz.length ||
                     questionIndex === quiz.length - 1

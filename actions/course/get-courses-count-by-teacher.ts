@@ -10,6 +10,7 @@ export async function getCoursesCountByTeacher(teacherId: string) {
     where: {
       userId: teacherId,
       isPublished: true,
+      status: "verified"
     },
   });
   return courses.length;

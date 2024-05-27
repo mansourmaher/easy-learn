@@ -1,5 +1,3 @@
-"use client";
-
 import { CiVideoOn } from "react-icons/ci";
 import { getCourseById } from "@/actions/course/get-course-byId";
 import { ShoppingCart, Signal, Users } from "lucide-react";

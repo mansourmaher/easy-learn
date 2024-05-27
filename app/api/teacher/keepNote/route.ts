@@ -40,7 +40,9 @@ export async function POST(req:Request)
                     score:true
                 }
             })
+            console.log(existingscore?.score!)
             const scoretoadd=grade-initilagrade
+            console.log("scoretoadded"+scoretoadd)
            
              const updatescore=await db.courseUser.update({
                 where:{

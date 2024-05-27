@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import ReviewProgress from "./course-review-progress";
 import { getCourseById } from "@/actions/course/get-course-byId";

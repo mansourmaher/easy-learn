@@ -48,18 +48,18 @@ function Listofcourseswithcarousel({ courses }: SingleUnstructorsPageProps) {
   }, [api, current]);
 
   return (
-    <>
+    <div className=" ">
       <Carousel plugins={[plugin.current]} className="w-full " setApi={setApi}>
         <CarouselContent className="py-14">
           {courses.map((course, index) => (
             <CarouselItem
               key={index}
-              className="basis-1/4 "
+              className=" md:basis-1/4 "
               onClick={() => {
                 api?.scrollTo(index);
               }}
             >
-              <div className="p-1">
+              <div className=" max-w-full md:p-1">
                 <div className="p-4 bg-white flex flex-col border rounded-lg">
                   <div className="relative w-full aspect-video rounded-xl mb-4">
                     <Image
@@ -141,7 +141,7 @@ function Listofcourseswithcarousel({ courses }: SingleUnstructorsPageProps) {
           ></input>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

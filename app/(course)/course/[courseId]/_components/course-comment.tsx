@@ -75,13 +75,14 @@ export default function CommentList({
     setIdCommentToEdit(id!);
   };
   const handelDeleteComment = async (id: string) => {
-    
     await deletecomment(id);
     router.refresh();
   };
   return (
     <>
       <div>
+        <h1 className="text-2xl font-semibold">{comments.length} Comments</h1>
+
         {comments.length >= 5 && (
           <ScrollArea className="h-[750px]">
             {comments.map((comment) => (

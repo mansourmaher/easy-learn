@@ -32,7 +32,12 @@ export default function MarkAsCompleteButton({
 
   return (
     <div>
-      <Button disabled={disabled || !isPurchased} onClick={() => onclick(chapterId)}>
+      <Button
+        disabled={disabled || !isPurchased}
+        onClick={() => onclick(chapterId)}
+        className="w-full"
+        variant={mustUploadwork ? "secondary" : "primary"}
+      >
         {mustUploadwork ? "Upload your work" : "Mark as complete"}
       </Button>
     </div>

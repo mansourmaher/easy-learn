@@ -44,7 +44,7 @@ export default function SheetNotification({
       <SheetTrigger asChild>
         <div className="relative inline-flex items-center justify-center h-8 w-8 rounded-full bg-gray-200 dark:bg-gray-700 cursor-pointer">
           {newNotif && (
-            <span className="absolute top-[-5px] right-[-5px] flex items-center justify-center w-5 h-5 bg-blue-500 text-white text-xs rounded-full" />
+            <span className="absolute top-[-5px] right-[-5px] flex items-center justify-center w-3 h-3 bg-blue-500 text-white text-xs rounded-full" />
           )}
           <BellIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
         </div>

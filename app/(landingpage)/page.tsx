@@ -8,55 +8,13 @@ import JoinBtn from "./_compoents/joinbtn";
 function Page() {
   return (
     <>
-      <header className="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
+      <header className="mt-4 top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
         <nav
-          className="relative max-w-[66rem] w-full  rounded-[28px] py-3 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto"
+          className="flex  justify-between items-center bg-gray-50 md:py-2 max-w-[66rem] w-full  rounded-[28px] py-3 ps-5 pe-2 md:flex md:items-center md:justify-between  mx-2 lg:mx-auto"
           aria-label="Global"
         >
           <div className="flex items-center justify-between ">
             <Logo />
-
-            <div className="md:hidden">
-              <button
-                type="button"
-                className="hs-collapse-toggle size-8 flex justify-center items-center text-sm font-semibold rounded-full bg-neutral-800 text-white disabled:opacity-50 disabled:pointer-events-none"
-                data-hs-collapse="#navbar-collapse"
-                aria-controls="navbar-collapse"
-                aria-label="Toggle navigation"
-              >
-                <svg
-                  className="hs-collapse-open:hidden flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" x2="21" y1="6" y2="6" />
-                  <line x1="3" x2="21" y1="12" y2="12" />
-                  <line x1="3" x2="21" y1="18" y2="18" />
-                </svg>
-                <svg
-                  className="hs-collapse-open:block hidden flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 6 6 18" />
-                  <path d="m6 6 12 12" />
-                </svg>
-              </button>
-            </div>
           </div>
 
           <div>

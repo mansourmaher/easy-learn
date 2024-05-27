@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { set } from "date-fns";
-import { Search } from "lucide-react";
+import { Command, Search } from "lucide-react";
 import React, { useEffect } from "react";
 import {
   MdKeyboardControlKey,
@@ -55,7 +55,12 @@ export default function SearchModal({ courses, teacher }: SearchModalProps) {
 
           <div className="w-12"></div>
           {/*  i want the ctrl key icon*/}
-          <span className="pl-2 text-muted-foreground text-sm">CTRL+K</span>
+          <span className="pl-2 text-muted-foreground text-sm flex">
+            {/* (Ctrl + K)  */}
+            {/* give me the real icon of ctrl key please */}
+            {/* not this its like a window */}
+            <Command size={20} /> + K
+          </span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-3xl w-full">

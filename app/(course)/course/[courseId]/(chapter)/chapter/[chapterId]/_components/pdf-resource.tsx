@@ -8,7 +8,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 import React, { useState } from "react";
 import {
-  AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTrigger
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { useResizeDetector } from "react-resize-detector";
@@ -47,7 +50,7 @@ export default function PdfResource({ info, work, id }: PdfModalProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <div className="text-sm font-medium cursor-pointer ">
+        <div className="text-sm font-medium  ">
           <div className="  text-left bg-white text-gray-800  border-gray-200 hover:border-gray-300 hover:shadow-md hover:bg-slate-200/80 transition-all duration-200 ease-in-out gap-x-6 border-radius-2xl pr-2 py-1 rounded-full border w-full mt-2">
             <div className="flex gap-x-1 justify-between items-center w-full m-2">
               <div>
@@ -98,7 +101,10 @@ export default function PdfResource({ info, work, id }: PdfModalProps) {
                 </span>
               </div>
               <div className="mr-4 cursor-pointer">
-                <Download size={20} className="text-blue-400" />
+                <a href={info} download>
+                  {" "}
+                  <Download size={20} className="text-blue-400" />
+                </a>
               </div>
             </div>
           </div>

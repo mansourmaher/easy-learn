@@ -6,6 +6,7 @@ import { getProgress } from '../course/get-progress';
 import { pusherServer } from '@/lib/pusher';
 import { get } from 'http';
 import { getClassementByCourse } from './get-classement-by-course';
+import { revalidatePath } from "next/cache";
 
 
 
@@ -111,5 +112,6 @@ export const markAsComplete = async (chapterId:string,courseId:string) => {
                 }
             })
     }
+    revalidatePath(`/course/${courseId}/chapter/${chapterId}`)
         
     }

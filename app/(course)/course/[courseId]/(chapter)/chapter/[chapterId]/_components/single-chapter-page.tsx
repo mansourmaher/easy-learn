@@ -19,7 +19,11 @@ interface ChapterPageProps {
   isPurchased: boolean;
 }
 
-const SingleChapterPage = async ({ courseId, chapterId,isPurchased }: ChapterPageProps) => {
+const SingleChapterPage = async ({
+  courseId,
+  chapterId,
+  isPurchased,
+}: ChapterPageProps) => {
   const courseName = await db.course.findUnique({
     where: {
       id: courseId,
@@ -61,6 +65,21 @@ const SingleChapterPage = async ({ courseId, chapterId,isPurchased }: ChapterPag
             videosrc={chapter?.videoUrl}
             img={courseName?.imageUrl!}
           />
+          <hr className="mx-8 my-4" />
+
+          <ChapterButtons
+            chapter={chapter!}
+            hasreport={!!existingReport}
+            courseId={courseId}
+            isCompltedthechapter={isCompltedthechapter?.isCompleted!}
+            studentshouldreport={studentshouldreport}
+            isPurchased={isPurchased}
+          />
+          <hr className="mx-8 my-4" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-6">
+            <ChapterDescreption descreption={chapter?.descreption!} />
+          </div>
         </div>
         <div className="col-span-2 items-center md:col-span-1">
           <div className="justify-center">
@@ -71,25 +90,12 @@ const SingleChapterPage = async ({ courseId, chapterId,isPurchased }: ChapterPag
             />
           </div>
 
-          <div className="h-[280px]  mb-8 ">
+          <div className="h-[280px]   ">
             <ScrollArea className="h-[280px]">
               <ChapterResources resources={chapter?.resources!} />
             </ScrollArea>
           </div>
         </div>
-      </div>
-
-      <ChapterButtons
-        chapter={chapter!}
-        hasreport={!!existingReport}
-        courseId={courseId}
-        isCompltedthechapter={isCompltedthechapter?.isCompleted!}
-        studentshouldreport={studentshouldreport}
-        isPurchased={isPurchased}
-      />
-      <hr className="m-8 mt-12" />
-      <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-6">
-        <ChapterDescreption descreption={chapter?.descreption!} />
       </div>
     </div>
   );

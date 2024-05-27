@@ -1,5 +1,3 @@
-"use client";
-
 import { getCourseById } from "@/actions/course/get-course-byId";
 import { getCourseComments } from "@/actions/course/get-course-comments";
 import React, { useEffect, useState } from "react";
@@ -15,6 +13,7 @@ import CourseStars from "./course-stars";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import CourseTarget from "./course-target";
 import CourseMobilesidebar from "./course-mobile-sidebar";
+import SecondteacherCardcourse from "./secondteachercardcourse";
 
 interface SingleCourseProps {
   course: Awaited<ReturnType<typeof getCourseById>>;
@@ -31,10 +30,6 @@ export default function SingleCourse({
   isuserPurchasedthiscourse,
   courseTotalPurchased,
 }: SingleCourseProps) {
-  const [showcomments, setShowcomments] = useState(false);
-  const handelComment = () => {
-    setShowcomments(!showcomments);
-  };
   return (
     <div>
       <div className="mx-6 hidden border-b-2 md:flex justify-normal">
@@ -43,9 +38,8 @@ export default function SingleCourse({
       <div className="m-8">
         <CourseImage img={course.imageUrl!} />
       </div>
-      <div className="m-8">
-        <CourseBtn onchange={handelComment} isShowComments={showcomments} />
-      </div>
+      <hr className="mx-16" />
+      <div className="m-8">{/* <CourseBtn  /> */}</div>
 
       <div className="mx-16">
         <CourseDescreption description={course.description!} />
@@ -64,12 +58,12 @@ export default function SingleCourse({
       </div>
       <hr className="mx-16" />
       <div className="mx-16">
-        <TeacherCardCourse course={course!} />
+        <SecondteacherCardcourse course={course!} />
       </div>
       <hr className="mx-16" />
 
       <div className="mt-8 mx-24  ">
-        {showcomments && comments!.length !== 0 && (
+        {comments!.length !== 0 && (
           <CommentList
             comments={comments}
             courseId={course?.id}

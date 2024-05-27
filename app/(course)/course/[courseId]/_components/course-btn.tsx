@@ -3,24 +3,10 @@ import { cn } from "@/lib/utils";
 import { on } from "events";
 import React from "react";
 
-interface CourseBtnProps {
-  onchange?: () => void;
-  isShowComments?: boolean;
-}
-
-export default function CourseBtn({
-  onchange,
-  isShowComments,
-}: CourseBtnProps) {
+export default function CourseBtn() {
   const btns = [
     {
       title: "Overview",
-    },
-    {
-      title: { isShowComments } ? "Forum Discussions" : "Hide Comments",
-    },
-    {
-      title: "Download Resources",
     },
   ];
   const [selected, setSelected] = React.useState(0);
@@ -34,23 +20,13 @@ export default function CourseBtn({
             className="rounded-full  p-4"
             size="sm"
             onClick={() => {
-              selected === 1 && onchange && onchange();
+              selected === 1 
               setSelected(0);
             }}
           >
             Overview
           </Button>
-          <Button
-            variant={selected === 1 ? "primary" : "ghost"}
-            className="rounded-full  p-4"
-            size="sm"
-            onClick={() => {
-              selected === 1 ? setSelected(0) : setSelected(1);
-              onchange && onchange();
-            }}
-          >
-            Forum Discussions
-          </Button>
+         
         </div>
       </div>
     </div>

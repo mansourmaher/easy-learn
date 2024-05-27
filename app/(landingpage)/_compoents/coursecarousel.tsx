@@ -41,13 +41,12 @@ function CourseCarousel({ teachers }: SingleUnstructorsPageProps) {
 
   return (
     <>
-      {current}
       <Carousel plugins={[plugin.current]} className="w-full " setApi={setApi}>
         <CarouselContent className="py-14">
           {teachers.map((teacher, index) => (
             <CarouselItem
               key={index}
-              className="basis-1/5 "
+              className="md:basis-1/5 "
               onClick={() => {
                 api?.scrollTo(index);
               }}
