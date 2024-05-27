@@ -46,6 +46,21 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
   const [scale, setScale] = React.useState(1);
   const [renderedScale, setRenderedScale] = useState<number | null>(null);
   const isLoading = renderedScale !== scale;
+  const [isOpen, setIsOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [note, setNote] = useState("");
+  const [grade, setGrade] = useState(0);
+  const [souldBerefresh, setSouldBerefresh] = useState(false);
+  const [initilagrade, setInitilagrade] = useState(0);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getReportById(id);
+      setNote(res?.note as string);
+      setGrade(res?.grade as number);
+      setInitilagrade(res?.grade as number);
+    };
+    fetchData();
+  }, [id, souldBerefresh]);
 
   return (
     <AlertDialog>
@@ -135,7 +150,7 @@ export default function PdfModal({ info, work, id }: PdfModalProps) {
                 </Button>
               </div>
 
-              <PdfNote id={id} />
+              <PdfNote id={id} note={note} grade={grade} />
               <div className="space-x-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

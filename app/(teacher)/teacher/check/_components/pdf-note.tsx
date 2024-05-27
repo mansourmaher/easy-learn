@@ -35,31 +35,25 @@ const formSchema = z.object({
 
 interface FormProps {
   id: any;
+  note?: string;
+  grade?: number;
 }
 
-export default function PdfNote({ id }: FormProps) {
+export default function PdfNote({ id, note, grade }: FormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState(null);
-  const [note, setNote] = useState("");
-  const [grade, setGrade] = useState(0);
+
   const [souldBerefresh, setSouldBerefresh] = useState(false);
-  const [initilagrade, setInitilagrade] = useState(0);
+  const [initilagrade, setInitilagrade] = useState(note);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      note: note,
+      grade: grade,
+    },
   });
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getReportById(id);
-      setNote(res?.note as string);
-      setGrade(res?.grade as number);
-      setInitilagrade(res?.grade as number);
-      form.setValue("note", res?.note as string);
-      form.setValue("grade", res?.grade as number);
-    };
-    fetchData();
-  }, [id, souldBerefresh]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values.grade, values.note, initilagrade);
