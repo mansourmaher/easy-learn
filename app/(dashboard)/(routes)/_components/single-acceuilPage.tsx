@@ -7,7 +7,7 @@ const SingleAcceuilPage = async () => {
   
   return (
     <div className="">
-      <div className="mt-8">
+      <div className="">
         <CourseStudentList />
       </div>
     </div>

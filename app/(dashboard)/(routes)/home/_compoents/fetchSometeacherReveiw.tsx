@@ -7,8 +7,8 @@ export const FetchSometeacherReveiw = async () => {
   const somereview = await fetchSometeacherReveiwforme();
 
   return (
-    <div className="flex flex-col">
-      <span className="text-lg font-semibold mb-2 ml-6">
+    <div className="flex flex-col h-[650px] overflow-y-auto">
+      <span className="text-lg font-semibold mb-2 ml-6 bg-gray-100 text-center p-4 rounded-xl">
         We pick some reviews for you
       </span>
       <Card className="rounded-3xl border p-4 bg-muted/40 w-96 mx-4">

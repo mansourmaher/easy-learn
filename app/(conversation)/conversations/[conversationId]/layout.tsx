@@ -6,7 +6,7 @@ const LayoutPage = async ({ children }: { children: React.ReactNode }) => {
   // const user = await auth();
   // const isverifiedteacher =
   //   user?.user.role == "TEACHER" && user?.user.teacherAccess == true;
-  const conversation = await getMyconversation();
+
   return (
     <div className="h-full">
       {/* <div className="hidden md:flex h-full w-56 flex-col fixed inset-y-0 z-50 ">

@@ -45,7 +45,8 @@ export const CourseCard = async ({
           src={imageUrl}
           alt="Course Image"
           fill
-          loading="lazy"
+          sizes="100vw"
+          priority
         />
       </div>
       <hr className="border-t border-muted-foreground mb-2" />

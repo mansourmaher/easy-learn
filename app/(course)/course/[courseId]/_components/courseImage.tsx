@@ -17,7 +17,7 @@ export default function CourseImage({ img }: CourseImageProps) {
           src={img}
           alt="Course Image"
           fill
-          loading="lazy"
+          priority
         />
       </div>
     </div>

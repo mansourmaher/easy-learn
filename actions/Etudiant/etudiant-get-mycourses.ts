@@ -64,6 +64,10 @@ export async function getThelastcoursethathaveprogressIn()
             chapter:true
         }
     })
+    if(userProgress.length==0)
+    {
+        return null
+    }
     const course=await db.chapter.findFirst({
         where:{
             id:userProgress[0].chapter.id

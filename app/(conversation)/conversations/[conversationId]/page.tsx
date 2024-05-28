@@ -11,6 +11,7 @@ import { getMessages } from "@/actions/conversation/getmessages";
 import { getTheTeacherFromConversationId } from "@/actions/conversation/gettheteacherfromconversationid";
 import { getMyconversation } from "@/actions/conversation/getmyconversation";
 import { BreadcrumbDemoConversation } from "@/app/(teacher_conversations)/teacher_conversations/(conversation)/conversations/_components/conversation_breadcrumb";
+import { ConversationsList } from "../_components/conversation_list";
 
 interface PageProps {
   params: {
@@ -57,10 +58,9 @@ const Page = async ({ params }: PageProps) => {
   }
   const messages = await getMessages(params.conversationId);
   const teacher = await getTheTeacherFromConversationId(params.conversationId);
-  const conversation = await getMyconversation();
+
   return (
     <div className="h-screen bg-secondary">
-      {/* <ConversationsList conversations={conversation} /> */}
       <div className="flex h-full flex-col">
         <BreadcrumbDemoConversation isteacher={false} />
         <ConversationHeader conversationId={params.conversationId} />

@@ -2,6 +2,7 @@
 
 import { markAsComplete } from "@/actions/Etudiant/mark-asComplete";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import toast from "react-hot-toast";
@@ -23,7 +24,11 @@ export default function MarkAsCompleteButton({
 
   chapterId,
 }: markAsCompleteButtonProps) {
+  const router = useRouter();
   const onclick = (chapterId: string) => {
+    if (!isPurchased) {
+      router.push(`/api/courses/${courseId}/checkout`);
+    }
     markAsComplete(chapterId, courseId);
     toast.success("Chapter marked as complete");
 
@@ -33,7 +38,7 @@ export default function MarkAsCompleteButton({
   return (
     <div>
       <Button
-        disabled={disabled || !isPurchased}
+        disabled={disabled}
         onClick={() => onclick(chapterId)}
         className="w-full"
         variant={mustUploadwork ? "secondary" : "primary"}

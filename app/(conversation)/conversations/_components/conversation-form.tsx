@@ -33,7 +33,7 @@ export function ConversationForm({ conversationId }: ConversationFormProps) {
     await createMessage(conversationId, data.message);
     createMessageForm.reset();
     createMessageForm.setValue("message", "");
-    router.refresh();
+     router.refresh();
   }
   const handelIploadImage = async (url: string) => {
     await uploadimageinconversation(conversationId, url);

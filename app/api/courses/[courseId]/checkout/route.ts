@@ -80,37 +80,7 @@ export async function POST(req:Request,{params}:{params:{courseId:string}}):  Pr
                 courseId
             }
         })
-        await db.courseUser.create({
-            data:{
-                userId:user.user.id as string,
-                courseId
-            }
-        })
-        await db.course.update({
-            where:{
-                id:courseId
-            },
-            data:{
-                totalPurchases:{
-                    increment:1
-                }
-            }
-        })
-        const notification= await db.notifications.create({
-            data:{
-                teacher:course?.userId!,
-                student:user.user.id as string,
-                message:`${user?.user.name} has purchased ${course?.title} course`
-            },
-            include:{
-                user:true,
-                studentNotif:true
-            }
-        })
-         await pusherServer.trigger('notification', 'new-notification', {
-            notification
-        });
-
+       
         
         return NextResponse.json({
             url:session.url

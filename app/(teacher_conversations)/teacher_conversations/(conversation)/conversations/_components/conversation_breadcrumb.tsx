@@ -29,7 +29,7 @@ export function BreadcrumbDemoConversation({ isteacher }: BreadcrumbProps) {
                 Dashboard
               </BreadcrumbLink>
             ) : (
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/home">Home</BreadcrumbLink>
             )}
           </BreadcrumbItem>
           <BreadcrumbSeparator />
