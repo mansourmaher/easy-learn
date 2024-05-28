@@ -11,69 +11,38 @@ import { pusherServer } from "@/lib/pusher";
 export async function POST(req:Request):  Promise<void | Response> {{
     console.log("webhook")
     const body=await req.text()
-    const user=await auth()
-    if(!user){
-        return new NextResponse(null,{status:401})
-    }
+   
 
     const signature=headers().get("Stripe-Signature") as string
+    console.log("signature")
 
     let event:Stripe.Event
-    try{
+  
         event=stripe.webhooks.constructEvent(body,signature,process.env.STRIPE_WEBHOOK_SECRET!)
-    }catch(e){  
-            return new NextResponse(null,{status:400})
-    }
+    console.log("event")
+   
     const session=event.data.object as Stripe.Checkout.Session
     const userId=session?.metadata?.userId
     const courseId=session?.metadata?.courseId
-    const course=await db.course.findUnique({
-        where:{
-            id:courseId
-        }
-    })
-
-    await db.courseUser.create({
-        data:{
-            userId:user.user.id as string,
-            courseId:courseId!
-        }
-    })
-    await db.course.update({
-        where:{
-            id:courseId
-        },
-        data:{
-            totalPurchases:{
-                increment:1
-            }
-        }
-    })
-    const notification= await db.notifications.create({
-        data:{
-            teacher:course?.userId!,
-            student:user.user.id as string,
-            message:`${user?.user.name} has purchased ${course?.title} course`
-        },
-        include:{
-            user:true,
-            studentNotif:true
-        }
-    })
-     await pusherServer.trigger('notification', 'new-notification', {
-        notification
-    });
-
+    
+    console.log("checkout completed")
+    
     if(event.type==="checkout.session.completed"){
         if(!userId || !courseId){
             return new NextResponse(null,{status:400})
 
         }
         console.log("checkout completed")
+        const course=await db.course.findUnique({
+            where:{
+                id:courseId
+            }
+        })
+    
         await db.courseUser.create({
             data:{
-                userId,
-                courseId
+                userId:userId!,
+                courseId:courseId!
             }
         })
         await db.course.update({
@@ -83,11 +52,31 @@ export async function POST(req:Request):  Promise<void | Response> {{
             data:{
                 totalPurchases:{
                     increment:1
-                
-            }
-
+                }
             }
         })
+        const user=await db.user.findFirst({
+            where:{
+                id:userId
+            },
+          
+        })
+        const notification= await db.notifications.create({
+            data:{
+                teacher:course?.userId!,
+                student:user?.id!,
+                message:`${user?.name} has purchased ${course?.title} course`,
+                courseId:courseId
+            },
+            include:{
+                user:true,
+                studentNotif:true
+            }
+        })
+         await pusherServer.trigger('notification', 'new-notification', {
+            notification
+        });
+    
 
     }else{
         return new NextResponse(null,{status:401})

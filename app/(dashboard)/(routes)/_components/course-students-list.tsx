@@ -16,6 +16,7 @@ import { BiRightArrow } from "react-icons/bi";
 const CourseStudentList = async () => {
   const mycourses = await etudiantgetycourses();
   const laschapter = await getThelastcoursethathaveprogressIn();
+
   if (mycourses.length === 0)
     return (
       <div className="flex flex-col items-center justify-center h-[80vh] space-y-4">
@@ -43,34 +44,39 @@ const CourseStudentList = async () => {
   return (
     <div className="flex ml-4 mt-8 ">
       <div className="">
-        <div className="mt-6">
-          <span className="text-lg font-semibold  ml-2 bg-gray-100 p-4 mb-4 mt-4 rounded-xl ">
-            Continue learning where you left off
-          </span>
-        </div>
-        <div className=" md:ml-30 md:w-[1200px] mt-6 mb-4  ">
-          <div className="flex items-center  justify-between space-x-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 p-4 rounded-lg shadow-md">
-            <div className="flex space-x-4">
-              <img
-                alt="Course"
-                className="w-14 h-14 "
-                src={laschapter?.courseInfo?.imageUrl!}
-              />
-              <div className="space-x-1">
-                <h3 className="text-lg font-medium text-white">
-                  {laschapter?.courseInfo?.title!}
-                </h3>
-                <p className="text-gray-200">
-                  {laschapter?.thenextChapter?.title!}
-                </p>
+        {laschapter && (
+          <>
+            <div className="mt-6">
+              <span className="text-lg font-semibold  ml-2 bg-gray-100 p-4 mb-4 mt-4 rounded-xl ">
+                Continue learning where you left off
+              </span>
+            </div>
+            <div className=" md:ml-30 md:w-[1200px] mt-6 mb-4  ">
+              <div className="flex items-center  justify-between space-x-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 p-4 rounded-lg shadow-md">
+                <div className="flex space-x-4">
+                  <img
+                    alt="Course"
+                    className="w-14 h-14 "
+                    src={laschapter?.courseInfo?.imageUrl!}
+                  />
+                  <div className="space-x-1">
+                    <h3 className="text-lg font-medium text-white">
+                      {laschapter?.courseInfo?.title!}
+                    </h3>
+                    <p className="text-gray-200">
+                      {laschapter?.thenextChapter?.title!}
+                    </p>
+                  </div>
+                </div>
+
+                <ContinueTochapter
+                  courseId={laschapter?.courseInfo?.id!}
+                  chapterId={laschapter?.thenextChapter?.id!}
+                />
               </div>
             </div>
-            <ContinueTochapter
-              courseId={laschapter?.courseInfo?.id!}
-              chapterId={laschapter?.thenextChapter?.id!}
-            />
-          </div>
-        </div>
+          </>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-[580px_580px] gap-8 place-content-center">
           {mycourses.map((course) => (
             <div key={course.id}>

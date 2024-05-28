@@ -46,7 +46,7 @@ const CourseInProgressCard = async ({
             {" "}
             <Progress value={etudiantgetycourses.progress} className="" />
             <span className="text-sm text-muted-foreground flex">
-              {etudiantgetycourses.progress}%
+              {Math.round(etudiantgetycourses.progress)}%
             </span>
           </div>
         </div>

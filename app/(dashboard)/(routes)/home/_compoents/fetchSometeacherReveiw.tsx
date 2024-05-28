@@ -13,6 +13,12 @@ export const FetchSometeacherReveiw = async () => {
       </span>
       <Card className="rounded-3xl border p-4 bg-muted/40 w-96 mx-4">
         <div className="flex flex-col">
+          {somereview?.length === 0 && (
+            <span className="text-sm text-muted-foreground mt-1.5  line-clamp-3 h-14 mb-6">
+              No reviews yet
+            </span>
+          )}
+          
           {/* <span className="text-lg font-semibold">
           We pick some reviews for you
         </span>

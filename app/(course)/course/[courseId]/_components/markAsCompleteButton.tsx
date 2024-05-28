@@ -33,6 +33,7 @@ export default function MarkAsCompleteButton({
     toast.success("Chapter marked as complete");
 
     window.location.reload();
+    router.refresh();
   };
 
   return (

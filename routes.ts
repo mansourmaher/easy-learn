@@ -3,7 +3,7 @@ export const publicRoutes = [
     "/api/uploadthing",
     "/meet",
     "/room",
-    "api/webhook",
+    "/api/webhook",
    
 ];
 

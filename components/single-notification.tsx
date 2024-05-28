@@ -24,7 +24,8 @@ export default function SingleNotifications({
   };
 
   const handelOnclick = (message: string) => {
-    message.split(" ")[2] === "purchased" && router.push(`/teacher/courses`);
+    message.split(" ")[2] === "purchased" &&
+      router.push(`/teacher/mycourses${notifcation?.courseId}`);
     message.split(" ")[2] === "completed" && router.push(`/teacher/courses`);
 
     message.split(" ")[3] === "work" && router.push(`/teacher/check`);
@@ -32,7 +33,8 @@ export default function SingleNotifications({
       router.push(
         `/course/${notifcation?.courseId}/chapter/${notifcation?.chapterId}`
       );
-      message.split(" ")[4] === "meeting" && router.push(`/room/${notifcation?.distination}`);
+    message.split(" ")[4] === "meeting" &&
+      router.push(`/room/${notifcation?.distination}`);
   };
 
   return (
