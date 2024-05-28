@@ -62,6 +62,7 @@ export function MessageBox({ message, currentUser, teacher }: MessageBoxProps) {
                 {message.body !== "" &&
                   message.body !== undefined &&
                   !message.body.includes("http://") &&
+                  !message.body.includes("https://") &&
                   message.body}
               </p>
             </div>
