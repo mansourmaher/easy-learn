@@ -113,7 +113,7 @@ export const TargetForm = ({ initialeData, courseId }: TitleFormProps) => {
                   <Tooltip>
                     <TooltipTrigger onDoubleClick={() => handelremove(index)}>
                       <span className=" p-2 relative text-gray-700 whitespace-normal break-all">
-                        {index + 1}) {" "} {option}
+                        {index + 1}) {option}
                       </span>
                     </TooltipTrigger>
                     <TooltipContent>Double click to remove</TooltipContent>
@@ -137,6 +137,7 @@ export const TargetForm = ({ initialeData, courseId }: TitleFormProps) => {
           </Button>
           <Button
             type="button"
+            variant={"primary"}
             size={"sm"}
             disabled={target === ""}
             className="mt-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center "

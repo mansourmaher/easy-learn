@@ -20,7 +20,7 @@ export const ourFileRouter = {
     .middleware(()=>handelAuth())
     .onUploadComplete(()=>{}),
     teacherAccess:f({
-        image:{maxFileSize:"4MB",maxFileCount:1},
+       
         "pdf":{maxFileSize:"512GB",maxFileCount:1},
     }).middleware(()=>handelAuth())
     .onUploadComplete(()=>{}),

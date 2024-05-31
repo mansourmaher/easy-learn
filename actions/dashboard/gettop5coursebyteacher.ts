@@ -11,10 +11,9 @@ export async function getTop5PurchasedCoursesByTeacher() {
    const courses=await db.course.findMany({
          where:{
               userId:userId,
-              isPublished:true,
-            status:"verified",
+              
          },
-         take:10,
+         
             orderBy:{
                 totalPurchases:"desc"
             },
@@ -35,7 +34,6 @@ export async function getTop5PurchasedCoursesByTeacher() {
 
     ))
     const orderthecourseIncludeRevenue=coursesIncludeRevenue.sort((a,b)=>b.revenue-a.revenue)
-    // console.log(orderthecourseIncludeRevenue)
     return orderthecourseIncludeRevenue
     
     

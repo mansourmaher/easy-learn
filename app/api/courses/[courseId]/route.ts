@@ -40,10 +40,7 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
         }
         
         
-        if(values.price)
-        {
-            values.price=parseInt(values.price);
-        }
+        
 
        
         if(!userId)

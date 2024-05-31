@@ -20,7 +20,7 @@ const DashboardCard = async () => {
   const subscribtion = await getToatalSubscribtion();
   const publisedcourse = await getPublisedcourse();
   const unpublishedcourse = await getUnPublisedcourse();
-  const courses=await totalacceptedcourssincludemonthlyincrease()
+  const courses = await totalacceptedcourssincludemonthlyincrease();
 
   return (
     <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
@@ -73,7 +73,6 @@ const DashboardCard = async () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{unpublishedcourse}</div>
-          <p className="text-xs text-muted-foreground">+201 since last hour</p>
         </CardContent>
       </Card>
     </div>

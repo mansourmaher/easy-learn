@@ -115,3 +115,23 @@ export const markAsComplete = async (chapterId:string,courseId:string) => {
     revalidatePath(`/course/${courseId}/chapter/${chapterId}`)
         
     }
+
+
+export async function markfreechapterInUnpurchasedCourseasComplete(chapterId:string,courseId:string)
+{
+    const user=await auth()
+    const userId=user?.user.id as string
+    console.log("free chapterinpaid course")
+
+    const userProgress=await db.userProgress.create({
+        data:{
+            chapterId:chapterId,
+            userId:userId,
+            
+            isCompleted:true
+        }
+        })
+
+        revalidatePath(`/course/${courseId}/chapter/${chapterId}`)
+
+}

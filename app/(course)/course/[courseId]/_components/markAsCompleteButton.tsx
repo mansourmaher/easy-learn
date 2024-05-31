@@ -1,6 +1,9 @@
 "use client";
 
-import { markAsComplete } from "@/actions/Etudiant/mark-asComplete";
+import {
+  markAsComplete,
+  markfreechapterInUnpurchasedCourseasComplete,
+} from "@/actions/Etudiant/mark-asComplete";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
@@ -25,11 +28,15 @@ export default function MarkAsCompleteButton({
   chapterId,
 }: markAsCompleteButtonProps) {
   const router = useRouter();
-  const onclick = (chapterId: string) => {
+  const onclick = async (chapterId: string) => {
     if (!isPurchased) {
-      router.push(`/api/courses/${courseId}/checkout`);
+      await markfreechapterInUnpurchasedCourseasComplete(chapterId, courseId);
+      toast.success("Chapter marked as complete");
+      window.location.reload();
+      router.refresh();
+      return;
     }
-    markAsComplete(chapterId, courseId);
+    await markAsComplete(chapterId, courseId);
     toast.success("Chapter marked as complete");
 
     window.location.reload();

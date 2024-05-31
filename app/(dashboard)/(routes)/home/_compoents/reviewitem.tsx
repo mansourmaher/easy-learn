@@ -32,8 +32,13 @@ function ReveiwItem({ review }: ReveiwItemProps) {
           </Badge>
         </div>
         <div className="flex justify-between">
+          <Badge variant={"primary"}>{review.course.title}</Badge>
+        </div>
+
+        <div className="flex justify-between">
           <Badge variant={"yellow"}>{review.chapter.title}</Badge>
         </div>
+
         <span className="text-sm text-muted-foreground">
           {" "}
           <div dangerouslySetInnerHTML={{ __html: review.note }}></div>

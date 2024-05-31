@@ -13,7 +13,10 @@ import { db } from "@/lib/db"
      const courseuser=await db.courseUser.findMany({
          where:{
              course:{
-                 userId:userId
+                 userId:userId,
+                 
+              isPublished:true,
+                status:"verified",
              }
 
          },
@@ -39,6 +42,7 @@ import { db } from "@/lib/db"
          return acc
      }
      ,0)
+
     
      const percentage=(revenue-revenueperlastmonth)/revenueperlastmonth*100
      return {
@@ -46,6 +50,7 @@ import { db } from "@/lib/db"
          revenueperlastmonth,
          percentage
      }
+     
    
 
    
@@ -125,8 +130,8 @@ import { db } from "@/lib/db"
      const course=await db.course.findMany({
          where:{
              userId:userId,
-             isPublished:true,
-             status:"pending"
+             isPublished:false,
+             
          }
      })
      return course.length

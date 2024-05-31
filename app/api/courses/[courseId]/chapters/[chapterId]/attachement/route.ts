@@ -7,7 +7,7 @@ export async function POST(req:Request,{params}:{params:{courseId:string,chapter
 
 {
     try{
-        console.log("asba")
+        
         const user =await auth();
         const userId=user?.user?.id as string;
         const {url}=await req.json()

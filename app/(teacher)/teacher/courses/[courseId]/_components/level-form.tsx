@@ -112,7 +112,7 @@ export const LevelForm = ({ initialeData, courseId }: CategoryFormProps) => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button type="submit" variant={"primary"} disabled={!isValid || isSubmitting}>
                 Save
               </Button>
             </div>

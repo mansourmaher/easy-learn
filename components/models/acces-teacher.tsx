@@ -14,7 +14,14 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
   const router = useRouter();
   const [isUploading, setIsUploading] = useState(true);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [error, setError] = useState(false);
+  const [errormessage, setErrorMessage] = useState("");
   const { startUpload } = useUploadThing("teacherAccess", {
+    onUploadError(error) {
+      setErrorMessage("Failed to upload file");
+      setError(true);
+      router.refresh();
+    },
     onUploadProgress: (progress) => {
       setUploadProgress(progress);
     },
@@ -36,8 +43,8 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
           //   });
           //@ts-ignore
           onchange && onchange(res[0]);
-          
-           router.refresh();
+
+          router.refresh();
         }
 
         setUploadProgress(100);
@@ -61,13 +68,23 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
                     <span className="text-primary">browse</span>
                   </p>
                 </div>
-                {acceptedFiles && acceptedFiles[0] ? (
+                {acceptedFiles && acceptedFiles[0] && !error ? (
                   <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outiline outline-[1px] outline-primary">
                     <div className="px-3 py-2 h-4 flex flex-row place-items-center">
                       <Files className="h-4 w-4 text-primary" />
                     </div>
                     <div className="px-3 py-2 h-full text-sm truncate">
                       {acceptedFiles[0].name}
+                    </div>
+                  </div>
+                ) : null}
+                {error ? (
+                  <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outiline outline-[1px] outline-primary">
+                    <div className="px-3 py-2 h-4 flex flex-row place-items-center">
+                      <Files className="h-4 w-4 text-primary" />
+                    </div>
+                    <div className="px-3 py-2 h-full text-sm truncate text-red-500">
+                      Error uploading file
                     </div>
                   </div>
                 ) : null}
@@ -81,12 +98,10 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
                       )}
                     />
                     <span className="items-center justify-center flex mt-2 text-gray-500">
-                      {uploadProgress === 100 && processing ? (
+                      {uploadProgress === 100 && processing  && !error && (
                         <div className=" flex gap-x-2">
                           <p>Uploading</p>
                         </div>
-                      ) : (
-                        <p>{uploadProgress}% Uploaded </p>
                       )}
                     </span>
                   </div>

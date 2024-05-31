@@ -115,7 +115,11 @@ export const ChaperDescreptionFormForm = ({
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit" disabled={!isValid || isSubmitting}>
+              <Button
+                variant={"primary"}
+                type="submit"
+                disabled={!isValid || isSubmitting}
+              >
                 Save
               </Button>
             </div>

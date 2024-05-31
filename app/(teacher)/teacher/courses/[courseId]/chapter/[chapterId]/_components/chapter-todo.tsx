@@ -2,43 +2,21 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormLabel,
-  FormField,
-  FormItem,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Cloud,
-  File,
-  ImageIcon,
-  Loader2,
-  Pencil,
-  PlusCircle,
-  X,
+  File, Loader2, PlusCircle,
+  X
 } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
-import { Attachment, Chapter, Course } from "@prisma/client";
-import Image from "next/image";
-import { FileUpload } from "@/components/file-upload";
-import { db } from "@/lib/db";
-import { set } from "date-fns";
+import { Chapter } from "@prisma/client";
 import { useUploadThing } from "@/lib/uploadthing";
 import Dropzone from "react-dropzone";
 import { Progress } from "@/components/ui/progress";
-import { BeatLoader } from "react-spinners";
 
 const formSchema = z.object({
   toDo: z.string().min(1, {
@@ -155,9 +133,6 @@ const UploadDropzone = ({
                     <span className="items-center justify-center flex mt-2 text-gray-500">
                       {uploadProgress === 100 && processing ? (
                         <div className=" flex gap-x-2">
-                          <p>
-                            <BeatLoader size={8} color="#818CF8" />
-                          </p>
                           <p>Uploading</p>
                         </div>
                       ) : (

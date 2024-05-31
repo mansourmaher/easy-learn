@@ -58,6 +58,7 @@ export const RegisterForm = () => {
     //@ts-ignore
     values.url = file?.url;
     console.log("file" + file);
+    if(selected === "TEACHER" && !file) return setError("Please upload your document");
     setError("");
     setSucces("");
     startTransition(() => {
