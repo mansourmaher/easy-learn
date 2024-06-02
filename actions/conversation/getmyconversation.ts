@@ -70,7 +70,7 @@ export async function getMyconversation()
     {
         return []
     }
-    const sortedConversationByLastMessage=myconversation.sort((a,b)=>b.messages[0].createdAt.getTime()-a.messages[0].createdAt.getTime())
+    const sortedConversationByLastMessage=myconversation.sort((a,b)=>b.messages[0]?.createdAt.getTime()-a.messages[0]?.createdAt.getTime())
 
     
 

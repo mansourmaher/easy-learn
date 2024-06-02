@@ -8,13 +8,14 @@ const resend=new Resend(process.env.RESEND_API_KEY)
 
 export const sendVerificationEmail=async(email:string,token:string)=>
 {
+    const confirmLinkdepend=`${process.env.NEXT_PUBLIC_APP_URL}/new-verification?token=${token}`
     const confirmLink='http://localhost:3000/new-verification?token='+token
     await sendRealMail({
         
         to: email,
         name: email,
         subject: 'Confirm your email',
-        body: `<p>Click <a href="${confirmLink}">here</a> to confirm your email</p>`,
+        body: `<p>Click <a href="${confirmLinkdepend}">here</a> to confirm your email</p>`,
     })
 
 

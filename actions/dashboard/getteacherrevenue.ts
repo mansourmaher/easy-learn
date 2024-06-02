@@ -15,8 +15,7 @@ import { db } from "@/lib/db"
              course:{
                  userId:userId,
                  
-              isPublished:true,
-                status:"verified",
+              
              }
 
          },

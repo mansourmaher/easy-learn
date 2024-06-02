@@ -31,14 +31,14 @@ export default function ChapterReport({
     }
   }, [workUrl]);
   const handelremovereport = async (id: string) => {
-    await removeReportChapter(id);
+    await removeReportChapter(id,courseId);
     router.refresh();
   };
   return (
     <div className="justify-center items-center flex flex-col w-full">
       <div className=" md:max-w-sm  w-full    bg-white rounded-lg shadow-md border border-gray-200">
         <div className="flex justify-between px-5 py-4 border-b">
-          <h3 className="text-lg font-semibold">Votre devoir</h3>
+          <h3 className="text-lg font-semibold">Report</h3>
           <span className="text-sm font-semibold text-blue-600">
             {existingReport ? "Submitted" : null}
           </span>
@@ -47,7 +47,7 @@ export default function ChapterReport({
           {existingReport && (
             <div>
               <div className="flex justify-between">
-                <span className="text-sm font-semibold">Devoire</span>
+                <span className="text-sm font-semibold">Report</span>
                 <div className="flex justify-between items-center gap-x-1">
                   <span className="text-sm font-semibold text-blue-600">
                     <a href={existingReport.workUrl!} target="_blank">

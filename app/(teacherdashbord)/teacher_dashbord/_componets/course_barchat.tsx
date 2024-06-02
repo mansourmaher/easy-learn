@@ -171,7 +171,7 @@ function CourseBarchat({ courses, student }: CourseBarchatProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="w-full md:col-span-3 relative lg:h-[50vh] h-[30vh] m-auto p-4 border rounded-lg bg-white">
+        <div className="w-full md:col-span-3 relative lg:h-[55vh] h-[35vh] m-auto p-4 border rounded-lg bg-white">
           <Bar data={chartData} options={chartOptions} />
         </div>
       </CardContent>
