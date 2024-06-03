@@ -26,7 +26,11 @@ export async function etudiantgetycourses()
                     id:true,
                     title:true,
                     description:true,
-                    chapters:true,
+                    chapters:{
+                        where:{
+                            isPublished:true
+                        }
+                    },
                     imageUrl:true
                 }
             }

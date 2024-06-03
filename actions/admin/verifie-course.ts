@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { sendRejectionEmail } from "@/lib/mail";
 import { sendRealMail } from "@/lib/real_mail/mail";
 
 export async function verifieCourse(id: string) {
@@ -49,12 +50,7 @@ export async function rejectCourseByid(id: string, reason: string) {
       teacher: course.userId,
     },
   });
-  const sendMail=await sendRealMail({
-    to:getCourseById?.user?.email!,
-    name:getCourseById?.user?.name!,
-    subject:"Course Rejected",
-    body:`<p>Your course has been rejected because ${reason}</p>`
-  })
+  await sendRejectionEmail(getCourseById?.user?.email!,getCourseById?.user?.name!,reason)
 
   return course;
 }

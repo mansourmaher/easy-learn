@@ -58,7 +58,8 @@ export const RegisterForm = () => {
     //@ts-ignore
     values.url = file?.url;
     console.log("file" + file);
-    if(selected === "TEACHER" && !file) return setError("Please upload your document");
+    if (selected === "TEACHER" && !file)
+      return setError("Please upload your document");
     setError("");
     setSucces("");
     startTransition(() => {
@@ -78,8 +79,8 @@ export const RegisterForm = () => {
           textAlign: "center",
         }}
       />
-      <div className="flex  sm:w-full md:w-1/2  items-center justify-center p-12">
-        <div className="w-full max-w-md border-2 p-6">
+      <div className="flex  sm:w-full md:w-1/2  items-center justify-center w-full ">
+        <div className="w-full max-w-md border p-6">
           <div className="flex justify-center mb-6"></div>
           <h2 className="text-3xl font-extrabold text-gray-900 text-center">
             Welcome to the community

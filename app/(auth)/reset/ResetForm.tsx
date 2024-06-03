@@ -51,16 +51,13 @@ export const ResetForm = () => {
         className="hidden w-1/2 items-center justify-center bg-cover lg:flex"
         style={{
           backgroundImage: "url('/teaching2.png')",
-          
         }}
       />
       <div className="px-24 lg:px-24 xl:px-24 mt-32 ml-32  ">
         <div className="flex items-center justify-center lg:min-h-[600px]">
           <div className="w-full max-w-sm space-y-4 shadow-lg border border-gray-200 rounded-lg p-6">
             <div className="space-y-2 text-center">
-              <h1 className="text-3xl font-bold text-blue-500">
-                Password Recovery
-              </h1>
+              <h1 className="text-3xl font-bold ">Password Recovery</h1>
               <p className=" dark:text-gray-400">
                 Enter the email address associated with your account, and we’ll
                 email you a link to reset your password.
@@ -121,7 +118,6 @@ export const ResetForm = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
