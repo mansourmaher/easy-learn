@@ -35,18 +35,24 @@ export const sendVerificationEmail=async(email:string,token:string)=>
 export const sendPasswordResetEmail=async(email:string,token:string)=>
 {
     
-    const confirmLink=`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`
-    const templatePath = path.join(process.cwd(), 'app', 'emailtemplates', 'resetpassword.html');
-    const source = fs.readFileSync(templatePath, 'utf8');
-    const template = handelbars.compile(source);
-    const htmlWithInlineStyles = juice(template({ confirmLink }));
+    // const confirmLink=`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`
+    // const templatePath = path.join(process.cwd(), 'app', 'emailtemplates', 'resetpassword.html');
+    // const source = fs.readFileSync(templatePath, 'utf8');
+    // const template = handelbars.compile(source);
+    // const htmlWithInlineStyles = juice(template({ confirmLink }));
     
-    await sendRealMail({
+    // await sendRealMail({
        
-        to: email,
-        name: email,
-        subject: 'Reset your password',
-        body: htmlWithInlineStyles,
+    //     to: email,
+    //     name: email,
+    //     subject: 'Reset your password',
+    //     body: htmlWithInlineStyles,
+    // })
+    await sendRealMail({
+        to:email,
+        name:email,
+        subject:'Reset your password',
+        body:`<h1>Reset your password</h1>`
     })
 }
 export const sendRejectionEmail = async (email: string, name: string, reason: string) => {
