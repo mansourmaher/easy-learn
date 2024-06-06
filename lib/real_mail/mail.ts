@@ -4,6 +4,10 @@ export async function sendRealMail({to,name,subject,body}:{to:string;name:string
     const {SMTP_EMAIL,SMTP_PASSWORD}=process.env
     const  transporter=nodemailer.createTransport({
         service:'gmail',
+        port:587,
+        secure:false,
+        host:'smtp.gmail.com',
+        
         auth:{
             user:"mansourmaher77@gmail.com",
             pass:"rvxe zpfz dgfy juyh"
@@ -33,6 +37,9 @@ export async function sendPasswordResetEmail(email:string,token:string){ {
   
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      port: 587,
+        secure: false,
+        host: "smtp.gmail.com",
       auth: {
         user: "mansourmaher@gmail.com",
         pass:"rvxe zpfz dgfy juyh"
