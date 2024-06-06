@@ -1,6 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { Search, Send } from "lucide-react";
+import { Loader, Search, Send } from "lucide-react";
 import React from "react";
 import { searchProblemInCommunity } from "@/actions/community/search-problem-in-community";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { deleteallcomunty } from "@/actions/community/deleteallcomunti";
 
 export default function CommunitySearchProblem() {
   const [message, setMessage] = React.useState("");
+  const [isloading, setIsloading] = React.useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
@@ -45,10 +46,14 @@ export default function CommunitySearchProblem() {
           className="bg-blue-500 text-white p-2 rounded-lg hover:text-white"
           variant={"outline"}
         >
-          <Send
-            size={24}
-            className=" cursor-pointer disabled:cursor-not-allowed"
-          />
+          {isloading ? (
+            <Loader size={24} className="animate-spin text-white" />
+          ) : (
+            <Send
+              size={24}
+              className="cursor-pointer disabled:cursor-not-allowed"
+            />
+          )}
         </Button>
       </div>
     </div>

@@ -31,7 +31,7 @@ export default function ComunityPostItem({
     await handledelepost(post.id);
     router.refresh();
   };
-  const hadneldeleteresponse = async (id:string) => {
+  const hadneldeleteresponse = async (id: string) => {
     await handeldelteresponse(id);
     router.refresh();
     // delete response
@@ -85,7 +85,10 @@ export default function ComunityPostItem({
                   Reply
                 </div>
                 {userId === post.user.id && (
-                  <div className="text-xs text-gray-500 cursor-pointer" onClick={hadneldeletepost}>
+                  <div
+                    className="text-xs text-gray-500 cursor-pointer"
+                    onClick={hadneldeletepost}
+                  >
                     Delete
                   </div>
                 )}
@@ -136,7 +139,10 @@ export default function ComunityPostItem({
                     </div>
                   </div>
                   {userId === post.user.id && (
-                    <div className="text-xs text-gray-500 cursor-pointer" onClick={()=>hadneldeleteresponse(response.id)}>
+                    <div
+                      className="text-xs text-gray-500 cursor-pointer"
+                      onClick={() => hadneldeleteresponse(response.id)}
+                    >
                       Delete
                     </div>
                   )}

@@ -1,3 +1,4 @@
+"use client"
 import {
     AlertDialog,
     AlertDialogDescription,
@@ -38,11 +39,13 @@ const formSchema = z.object({
 interface ConfirmModelProps {
   chapterId: string;
   courseId: string;
+  hiddeletebtn?: boolean;
 }
 
 export const QuizFormForteacher = ({
   chapterId,
   courseId,
+  hiddeletebtn,
 }: ConfirmModelProps) => {
   const {
     register,
@@ -184,6 +187,7 @@ export const QuizFormForteacher = ({
             >
               Previews
             </Button>
+            {!hiddeletebtn && (
             <Button
               type="button"
               onClick={() => {
@@ -195,8 +199,10 @@ export const QuizFormForteacher = ({
               //@ts-ignore
               disabled={!quiz[questionIndex]?.id || isloading}
             >
+            
               {isloading ? <Loader className="animate-spin" /> : "Delete"}
             </Button>
+            )}
             <Button
               type="button"
               onClick={() => {

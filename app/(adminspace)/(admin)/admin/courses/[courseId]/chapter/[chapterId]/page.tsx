@@ -22,6 +22,7 @@ import Bannner from "@/components/banner";
 import { AttachementFormChapter } from "./_components/chapter-resource";
 import { ChapterToDo } from "./_components/chapter-todo";
 import { auth } from "@/auth";
+import QuizFormForteacher from "@/components/models/quizformforteacher";
 
 const EditChapter = async ({
   params,
@@ -105,6 +106,11 @@ const EditChapter = async ({
                   {competeText}
                 </span>
               </div>
+              <QuizFormForteacher
+                courseId={params.courseId}
+                chapterId={params.chapterId}
+                hiddeletebtn={true}
+              />
             </div>
           </div>
         </div>

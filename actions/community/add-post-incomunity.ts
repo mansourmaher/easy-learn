@@ -9,6 +9,7 @@ export async function addPostInCommunity(comunityId: string, message: string ,is
 
     const user=await auth()
     const userId=user?.user.id
+    console.log("imageUrl",imageurl)
 
     const post=await db.post.create({
         data:{

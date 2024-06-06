@@ -38,7 +38,7 @@ export const PriceForm = ({ initialeData, courseId }: PriceFormProps) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      price: initialeData.price!,
+      price: initialeData.price! 
     },
   });
   const { isSubmitting, isValid } = form.formState;
@@ -56,7 +56,7 @@ export const PriceForm = ({ initialeData, courseId }: PriceFormProps) => {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4 ">
       <div className="font-medium flex items-center justify-between">
-        The price of your course
+        The price of your course {initialeData.price ? "is" : "is not"} set
         <Button variant="ghost" onClick={toggleEditing}>
           {isEditing && <>Cancel</>}
           {!isEditing && (
@@ -106,7 +106,11 @@ export const PriceForm = ({ initialeData, courseId }: PriceFormProps) => {
               )}
             />
             <div className="flex items-center gap-x-2">
-              <Button type="submit"  variant={"primary"} disabled={isSubmitting || !isValid}>
+              <Button
+                type="submit"
+                variant={"primary"}
+                disabled={isSubmitting || !isValid}
+              >
                 Save
               </Button>
             </div>

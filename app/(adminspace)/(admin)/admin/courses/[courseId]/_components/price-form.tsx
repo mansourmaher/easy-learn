@@ -62,7 +62,7 @@ export const PriceForm = ({ initialeData, courseId }: PriceFormProps) => {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4 ">
       <div className="font-medium flex items-center justify-between">
-        The price of your course
+        Course price
       </div>
       {!isEditing && (
         <p

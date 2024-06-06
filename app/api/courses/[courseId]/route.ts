@@ -38,6 +38,7 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
                 }
             })
             if(!existingconversation)
+                {
                 
             await db.conversation.create({
                 data:{
@@ -46,6 +47,9 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
                     
                 }
             })
+        }
+
+            return new NextResponse("Course published successfully");
            
         
             

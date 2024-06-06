@@ -80,14 +80,13 @@ const CourseIdPage = async ({
   const requiredFields = [
     course.title,
     course.description,
-    course.price,
+
     course.categoryId,
     course.imageUrl,
     course.level,
     course.target,
     course.chapters.length > 0,
-    
-    course.attachment.length > 0,
+    course.target.length > 1,
   ];
   const totalFields = requiredFields.length;
   const completedFields = requiredFields.filter(Boolean).length;

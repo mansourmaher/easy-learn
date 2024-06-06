@@ -44,7 +44,7 @@ const Page = async (params: {
               <div className="flex flex-col w-full px-6  space-y-2 bg-white">
                 <CommunitySearchProblem />
 
-                <div className="bg-gray-100  overflow-y-auto p-4 rounded-lg md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px]">
+                <div className="bg-gray-100  overflow-y-auto p-4 rounded-lg  md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px] md:min-h-[100px] lg:min-h-[600px] xl:min-h-[700px] 2xl:min-h-[800px]">
                   {posts.length === 0 && (
                     <div className="text-gray-500 my-auto flex mx-auto">
                       No posts yet in this community
