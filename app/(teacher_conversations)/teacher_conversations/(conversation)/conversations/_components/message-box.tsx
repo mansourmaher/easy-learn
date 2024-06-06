@@ -50,7 +50,7 @@ export function MessageBox({ message, currentUser, teacher }: MessageBoxProps) {
           {message.body !== "" && (
             <div
               className={`px-3 py-2 rounded-lg max-w-[320px] w-fit text-white ${
-                isSender(message) ? "bg-blue-400 ml-auto order-2" : "bg-gray-400"
+                isSender(message) ? "bg-blue-400 ml-auto order-2" : "bg-red-400"
               }`}
             >
               <p>
