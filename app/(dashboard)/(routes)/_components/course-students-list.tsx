@@ -42,7 +42,7 @@ const CourseStudentList = async () => {
     );
 
   return (
-    <div className="flex ml-4 mt-8 ">
+    <div className="grid grid-cols-1 md:grid-cols-[1200px_1fr] ml-4 mt-8  ">
       <div className="">
         {laschapter && (
           <>
@@ -51,7 +51,7 @@ const CourseStudentList = async () => {
                 Continue learning where you left off
               </span>
             </div>
-            <div className=" md:ml-30 md:w-[1200px] mt-6 mb-4  ">
+            <div className=" mt-6 mb-4  ">
               <div className="flex items-center  justify-between space-x-4 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 p-4 rounded-lg shadow-md">
                 <div className="flex space-x-4">
                   <img

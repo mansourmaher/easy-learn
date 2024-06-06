@@ -23,8 +23,8 @@ const Page = async (params: {
   const posts = await getPostsInCommunity(comunityId);
 
   return (
-    <div className="max-h-full w-full">
-      <div className="flex justify-between h-full w-full ">
+    <div className="w-full ">
+      <div className="flex justify-between w-full ">
         <div className="w-full ">
           <div className="flex flex-row items-center  ml-4 justify-between">
             {/* <MobileSidebar /> */}
@@ -36,7 +36,7 @@ const Page = async (params: {
           </div>
 
           <div className="border-b-2 mr-7 ml-6 mt-2"></div>
-          <div className="flex flex-col bg-gray-100 max-h-[570px] ">
+          <div className="flex flex-col bg-gray-100 ">
             <div className="flex h-full">
               {/* <div>
                 <ComunityList />
@@ -44,7 +44,7 @@ const Page = async (params: {
               <div className="flex flex-col w-full px-6  space-y-2 bg-white">
                 <CommunitySearchProblem />
 
-                <div className="bg-gray-100 h-[500px] overflow-y-auto p-4 rounded-lg">
+                <div className="bg-gray-100  overflow-y-auto p-4 rounded-lg md:max-h-[500px] lg:max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px]">
                   {posts.length === 0 && (
                     <div className="text-gray-500 my-auto flex mx-auto">
                       No posts yet in this community

@@ -33,7 +33,7 @@ const LayoutDashbord = async ({ children }: { children: React.ReactNode }) => {
   const community = await getAllCommunity();
   const myconversation = await getMyconversation();
   return (
-    <div className="h-full">
+    <div className="flex flex-col h-full">
       <div className="h-[80px]  fixed inset-y-0 w-full z-50">
         <StudentNavbar />
       </div>
@@ -44,7 +44,7 @@ const LayoutDashbord = async ({ children }: { children: React.ReactNode }) => {
         /> 
       </div> */}
 
-      <main className=" pt-[80px] h-full">{children}</main>
+      <main className="flex flex-1 pt-[80px] h-full">{children}</main>
     </div>
   );
 };
