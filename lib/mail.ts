@@ -35,7 +35,7 @@ export const sendVerificationEmail=async(email:string,token:string)=>
 export const sendPasswordResetEmail=async(email:string,token:string)=>
 {
     
-    // const confirmLink=`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`
+    const confirmLink=`${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${token}`
     // const templatePath = path.join(process.cwd(), 'app', 'emailtemplates', 'resetpassword.html');
     // const source = fs.readFileSync(templatePath, 'utf8');
     // const template = handelbars.compile(source);
@@ -48,11 +48,84 @@ export const sendPasswordResetEmail=async(email:string,token:string)=>
     //     subject: 'Reset your password',
     //     body: htmlWithInlineStyles,
     // })
+    const emailBody = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Reset your password</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          padding: 40px 0;
+        }
+        .container {
+          max-width: 600px;
+          margin: 0 auto;
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+        }
+        .header {
+          background-color: #007bff;
+          color: #ffffff;
+          padding: 20px;
+          text-align: center;
+        }
+        .content {
+          padding: 40px;
+        }
+        .button {
+          display: inline-block;
+          background-color: #007bff;
+          color: #ffffff;
+          text-decoration: none;
+          padding: 12px 24px;
+          border-radius: 4px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .footer {
+          background-color: #f5f5f5;
+          padding: 20px;
+          text-align: center;
+          font-size: 14px;
+          color: #666666;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>Reset your password</h1>
+        </div>
+        <div class="content">
+          <h2>Hello,</h2>
+          <p>
+            We received a request to reset your password. If you did not make this request, you can safely ignore this email.
+          </p>
+          <div style="text-align: center; margin-bottom: 24px;">
+            <a href="${confirmLink}" class="button">
+              Reset Password
+            </a>
+          </div>
+          <p>If you have any questions or need further assistance, please don't hesitate to contact us.</p>
+        </div>
+        <div class="footer">
+          <p>&copy; 2023 E-Learning Platform. All rights reserved.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
     await sendRealMail({
         to:email,
         name:email,
         subject:'Reset your password',
-        body:`<h1>Reset your password</h1>`
+        body:emailBody
     })
 }
 export const sendRejectionEmail = async (email: string, name: string, reason: string) => {
