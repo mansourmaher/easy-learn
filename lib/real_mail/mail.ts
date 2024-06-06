@@ -5,8 +5,8 @@ export async function sendRealMail({to,name,subject,body}:{to:string;name:string
     const  transporter=nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:SMTP_EMAIL,
-            pass:SMTP_PASSWORD
+            user:"mansourmaher77@gmail.com",
+            pass:"rvxe zpfz dgfy juyh"
         }
     })
     try{

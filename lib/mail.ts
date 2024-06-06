@@ -8,7 +8,6 @@ import fs from 'fs';
 import juice from 'juice';
 
 
-const resend=new Resend(process.env.RESEND_API_KEY)
 
 
 export const sendVerificationEmail=async(email:string,token:string)=>

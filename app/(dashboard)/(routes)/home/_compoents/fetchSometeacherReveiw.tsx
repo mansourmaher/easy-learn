@@ -7,7 +7,7 @@ export const FetchSometeacherReveiw = async () => {
   const somereview = await fetchSometeacherReveiwforme();
 
   return (
-    <div className="flex flex-col h-[650px] overflow-y-auto">
+    <div className="flex flex-col h-[650px] overflow-y-auto ">
       <span className="text-lg font-semibold mb-2 ml-6 bg-gray-100 text-center p-4 rounded-xl">
         We pick some reviews for you
       </span>
@@ -18,7 +18,7 @@ export const FetchSometeacherReveiw = async () => {
               No reviews yet
             </span>
           )}
-          
+
           {/* <span className="text-lg font-semibold">
           We pick some reviews for you
         </span>

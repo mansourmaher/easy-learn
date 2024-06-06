@@ -28,7 +28,17 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
                     courseId:courseId
                 }
             })
+            await db.course.update({
+                where:{
+                    id:courseId
+                },
+                data:{
+                    isPublished:true,
+                    status:"pending"
+                }
+            })
             if(!existingconversation)
+                
             await db.conversation.create({
                 data:{
                     title:`${existingcourse?.title} conversation`,
@@ -36,6 +46,8 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
                     
                 }
             })
+           
+        
             
         }
         
@@ -51,6 +63,7 @@ export async function PATCH(req:Request,{params}:{params:{courseId:string}})
         {
             throw new Error("You must provide a course id");
         }
+        
         const course=await db.course.update({
             where:{
                 id:courseId
