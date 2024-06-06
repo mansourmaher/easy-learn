@@ -49,8 +49,10 @@ export function MessageBox({ message, currentUser, teacher }: MessageBoxProps) {
         <div className="flex items-end">
           {message.body !== "" && (
             <div
-              className={`px-3 py-2 rounded-lg max-w-[10rem] w-fit text-white ${
-                isSender(message) ? "bg-blue-400 ml-auto order-2" : "bg-gray-400"
+              className={`px-3 py-2 rounded-lg max-w-[320px] w-fit text-white ${
+                isSender(message)
+                  ? "bg-blue-400 ml-auto order-2"
+                  : "bg-gray-400"
               }`}
             >
               <p>
