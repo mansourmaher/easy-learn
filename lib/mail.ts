@@ -13,13 +13,7 @@ import juice from 'juice';
 export const sendVerificationEmail=async(email:string,token:string)=>
 {
     const confirmLink=`${process.env.NEXT_PUBLIC_APP_URL}/new-verification?token=${token}`
-    // const templatePath = path.join(process.cwd(), 'app', 'emailtemplates', 'verify.html');
-    // const source = fs.readFileSync(templatePath, 'utf8');
-  
-    // // Use Handlebars to compile the template with dynamic data
-    // const template = handelbars.compile(source);
-    // // const confirmLink2='http://localhost:3000/new-verification?token='+token
-    // const htmlWithInlineStyles = juice(template({ confirmLink }));
+   
 
     const emailBody = `
      <!DOCTYPE html>
