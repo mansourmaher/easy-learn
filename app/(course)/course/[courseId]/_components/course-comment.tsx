@@ -81,7 +81,11 @@ export default function CommentList({
   return (
     <>
       <div>
-        <h1 className="text-2xl font-semibold">{comments.length} Comments</h1>
+        <h1 className="text-2xl font-semibold mb-4">Course Comments</h1>
+        <p className="text-gray-600 mb-4">
+          Explore what other students have to say about this course , If you
+          have taken this course before, please leave a review to help others.
+        </p>
 
         {comments.length >= 5 && (
           <ScrollArea className="h-[750px]">

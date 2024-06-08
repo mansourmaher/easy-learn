@@ -24,7 +24,7 @@ const SecondteacherCardcourse = async ({ course }: TeacherCardCourseProps) => {
   const studentCount = await getCountUserInEachCourse(course!.userId!);
 
   return (
-    <div className="p-4">
+    <div className="py-8 mx-6">
       <div className="flex items-start space-x-4">
         <Avatar>
           <AvatarImage
@@ -41,7 +41,7 @@ const SecondteacherCardcourse = async ({ course }: TeacherCardCourseProps) => {
                 {course?.user?.subtitle || "No subtitle"}
               </p>
             </div>
-            <div className="flex md:ml-4">
+            <div className="flex ">
               {[...Array(5)].map((_, index) => {
                 const currentRating = index + 1;
                 return (
@@ -68,8 +68,8 @@ const SecondteacherCardcourse = async ({ course }: TeacherCardCourseProps) => {
                 );
               })}
               <span>
-                ({(Math.round(rating * 100) / 100).toFixed(2)}) (
-                {reviewCount} Review)
+                ({(Math.round(rating * 100) / 100).toFixed(2)}) ({reviewCount}{" "}
+                Review)
               </span>
             </div>
           </div>
@@ -95,8 +95,10 @@ const SecondteacherCardcourse = async ({ course }: TeacherCardCourseProps) => {
                 <div className="flex  items-center space-x-2">
                   <PlayCircle className="w-4 h-4 text-blue-400" />
                   <div className="md:flex flex-row md:gap-x-1 items-center">
-                    <Link href={`/search?teacher=${course?.user?.name}`} >
-                        <p className="text-blue-400 cursor-pointer ">{courseCount} Courses</p>
+                    <Link href={`/search?teacher=${course?.user?.name}`}>
+                      <p className="text-blue-400 cursor-pointer ">
+                        {courseCount} Courses
+                      </p>
                     </Link>
                     {/* <div className="text-blue-400 ">{courseCount} Courses</div> */}
                   </div>
