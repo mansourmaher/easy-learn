@@ -237,9 +237,9 @@ function Page() {
         </div>
         {/* @ts-ignore */}
         <CourseCarouselFetchdata />
-        <Bannner title="Ready to learn something new? Register now and connect with our expert teachers!" />
+        {/* <Bannner title="Ready to learn something new? Register now and connect with our expert teachers!" />
 
-        <CarouselFetchDta />
+        <CarouselFetchDta /> */}
 
         <div className="">
           <div className="max-w-5xl px-4 xl:px-0 py-10 lg:pt-20  mx-auto">

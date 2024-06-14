@@ -16,14 +16,12 @@ const SingleTeacherProfile = async ({
   teacherId,
 }: SingleTeacherProfileProps) => {
   const courses = await getCoursesBytecaher(teacherId);
-  const postion = await getThePostionOftheteacherById(
-    teacherId
-  );
+
   return (
     <div>
       <div>
         <TeacherProfileHeader teacherName={teacher.name!} />
-        <TeacherProfile teacher={teacher}  postion={postion}/>
+        <TeacherProfile teacher={teacher} />
         <div className="space-y-2 px-8">
           <h2 className="text-1xl font-bold">Discover my courses</h2>
           <span>

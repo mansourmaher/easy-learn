@@ -7,7 +7,7 @@ import { Editor } from "@/components/editor";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { set } from "date-fns";
-import { Loader2 } from "lucide-react";
+import { Loader, Loader2 } from "lucide-react";
 import React from "react";
 import toast from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
@@ -82,9 +82,11 @@ export default function CourseRating({
       {isVisible && (
         <>
           <div className="flex flex-col gap-y-6 w-full  ">
-            <div className="flex flex-row gap-x-6 items-center">
-              <p className=" flex ml-16 text-sm font-semibold">
-                You can Rate this coure and keep a comment below to help others
+            <div className="flex flex-col gap-x-6 items-center">
+              <h1 className="text-2xl font-semibold">Rate this course</h1>
+              <p className="text-sm text-muted-foreground">
+                Your rating will help others to choose the right course. Your
+                rating will be public.
               </p>
               <div className="flex flex-row gap-x-1">
                 {[...Array(5)].map((_, index) => {
@@ -118,8 +120,12 @@ export default function CourseRating({
               </div>
               <p> {labels[rating!]}</p>
             </div>
-            <div className="w-full pl-16 pr-32">
-              <Editor value={comment!} onChange={setComment} />
+            <div className="grid grid-cols-1 md:grid-cols-[580px_580px] gap-8 place-content-center">
+              <div className="col-span-2 ">
+                <h1 className="text-2xl font-semibold">Write a review</h1>
+
+                <Editor value={comment!} onChange={setComment} />
+              </div>
             </div>
             {rating !== 0 && comment !== "" ? (
               <div className="flex flex-row justify-end pr-32">
@@ -130,11 +136,11 @@ export default function CourseRating({
                   variant="primary"
                 >
                   {isDisabled ? (
-                    <Loader2 className="animate-spin" />
+                    <Loader className="animate-spin" />
                   ) : isUpdating ? (
                     "Update"
                   ) : (
-                    "Comment"
+                    "Save"
                   )}
                 </Button>
               </div>

@@ -33,7 +33,10 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     <>
       <div className="px-52 pt-6 md:hidden md:mb-0 block"></div>
       <div className="p-6 space-y-6 ">
-        <Categories />
+        <div className="flex justify-center">
+          <Categories />
+        </div>
+
         <TopThreeCourses />
         {!courses ? (
           <div>

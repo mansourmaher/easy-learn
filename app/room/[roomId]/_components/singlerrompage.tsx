@@ -21,11 +21,11 @@ const SingleRoomPage = ({
   const router = useRouter();
 
   const sendmessage = async () => {
+    const link = window.location.href;
     await sendMessageofthestream(id as string, link);
   };
   const handelclosetheMeeting = async () => {
     await closeMeeting(id as string);
-    router.push("/teacher_dashbord");
   };
 
   function randomID(len: any) {

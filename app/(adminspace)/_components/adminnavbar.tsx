@@ -149,17 +149,10 @@ const AdminNavbar = async () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-
-            <UserButton />
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
             <LogoutBtn />
           </DropdownMenuContent>
         </DropdownMenu>
-        <SheetNotification notifications={notifs} userId={userId} />
+        {/* <SheetNotification notifications={notifs} userId={userId} /> */}
       </div>
     </header>
   );

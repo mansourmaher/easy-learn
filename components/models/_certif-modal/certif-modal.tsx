@@ -89,7 +89,7 @@ export default function CertifModal({ courseUser }: CertifModalProps) {
                             {courseUser?.user?.name || ""}
                           </h2>
                           <p className="text-center text-sm">
-                            the company confirms that{" "}
+                            We confirms that{" "}
                             <span className="text-blue-400 text-xl font-semibold my-1">
                               {courseUser?.user?.name}
                             </span>{" "}
@@ -124,14 +124,8 @@ export default function CertifModal({ courseUser }: CertifModalProps) {
                                 className="object-cover border-2 border-zinc-300 "
                               /> */}
                             </div>
-                            <div className="flex flex-col items-center">
-                              <hr className="w-32 border-t-2 border-zinc-300" />
-                              <span className="text-sm mt-2">SIGNATURE</span>
-                            </div>
                           </div>
-                          <h3 className="text-xl font-semibold text-center mt-8 mb-12">
-                            [Company Name]
-                          </h3>
+
                           <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-r from-gold-400 to-gold-300"></div>
                         </div>
                       </div>

@@ -29,7 +29,11 @@ const UploadDropzone = ({
 }: CompteRenduProps) => {
   const [isUploading, setIsUploading] = useState(true);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [error, setError] = useState(false);
   const { startUpload } = useUploadThing("compteRendu", {
+    onUploadError: (error) => {
+      setError(true);
+    },
     onUploadProgress: (progress) => {
       setUploadProgress(progress);
     },
@@ -76,9 +80,11 @@ const UploadDropzone = ({
                   <p className="text-sm text-gray-500">
                     Drag and drop your file here or{" "}
                     <span className="text-primary">browse</span>
+                    <p className="text-primary">Only .pdf files are allowed</p>
                   </p>
                 </div>
-                {acceptedFiles && acceptedFiles[0] ? (
+                {error && <p className="text-red-500">Error uploading file</p>}
+                {acceptedFiles && acceptedFiles[0] && !error ? (
                   <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outiline outline-[1px] outline-primary">
                     <div className="px-3 py-2 h-4 flex flex-row place-items-center">
                       <File className="h-4 w-4 text-primary" />
@@ -88,7 +94,7 @@ const UploadDropzone = ({
                     </div>
                   </div>
                 ) : null}
-                {isUploading ? (
+                {isUploading && !error ? (
                   <div className="w-full mt-4 max-w-xs mx-auto ">
                     <Progress
                       value={uploadProgress}
@@ -98,15 +104,12 @@ const UploadDropzone = ({
                       )}
                     />
                     <span className="items-center justify-center flex mt-2 text-gray-500">
-                      {uploadProgress === 100 && processing ? (
+                      {uploadProgress === 100 && processing && !error ? (
                         <div className=" flex gap-x-2">
-                          <p>
-                            <BeatLoader size={8} color="#818CF8" />
-                          </p>
                           <p>Uploading</p>
                         </div>
                       ) : (
-                        <p>{uploadProgress}% Uploaded </p>
+                        <p>{uploadProgress}% </p>
                       )}
                     </span>
                   </div>

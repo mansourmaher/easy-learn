@@ -16,13 +16,9 @@ import { useState } from "react";
 
 interface teacherProfileProps {
   teacher: Awaited<ReturnType<typeof getTeacherById>>;
-  postion: Awaited<ReturnType<typeof getThePostionOftheteacherById>>;
 }
 
-export default function TeacherProfile({
-  teacher,
-  postion,
-}: teacherProfileProps) {
+export default function TeacherProfile({ teacher }: teacherProfileProps) {
   // const getAge = (date: Date) => {
   //   const today = new Date();
   //   const birthDate = new Date(date);
@@ -41,44 +37,6 @@ export default function TeacherProfile({
       <div className="w-full py-6 space-y-6">
         <div className="container space-y-4">
           <div className="max-w-5xl mx-auto p-8 bg-white shadow rounded-lg">
-            <div className="flex justify-end">
-              {postion === 0 && (
-                <img
-                  src="/firstmeaille.jpg"
-                  width={50}
-                  height={50}
-                  alt="first"
-                  loading="lazy"
-                />
-              )}
-              {postion === 1 && (
-                <img
-                  src="/secondmeaille.jpg"
-                  width={50}
-                  height={50}
-                  alt="first"
-                  loading="lazy"
-                />
-              )}
-              {postion === 2 && (
-                <img
-                  src="/thirdmeaille.jpg"
-                  width={50}
-                  height={50}
-                  alt="first"
-                  loading="lazy"
-                />
-              )}
-              {postion > 2 && (
-                <img
-                  src="/stars.jpg"
-                  width={50}
-                  height={50}
-                  alt="first"
-                  loading="lazy"
-                />
-              )}
-            </div>
             <div className="flex flex-col lg:flex-row lg:space-x-8">
               <div className="flex flex-col items-center space-y-4 lg:w-1/3">
                 <Image
@@ -98,7 +56,6 @@ export default function TeacherProfile({
                 </p>
                 <p className="text-sm text-gray-500">
                   Joined in {format(new Date(teacher?.createdAt!), "yyyy")}
-                  {postion} postion
                 </p>
                 <p className="text-sm text-gray-500">
                   {teacher.subtitle || "No subtitle available"}

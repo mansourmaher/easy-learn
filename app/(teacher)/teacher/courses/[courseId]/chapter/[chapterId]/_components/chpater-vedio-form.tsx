@@ -43,10 +43,7 @@ export const ChapterVedioForm = ({
   const getThevideoDurationFromtheUrl = (url: string) => {
     const video = document.createElement("video");
     video.src = url;
-    video.addEventListener("loadedmetadata", () => {
-      alert(video.duration);
-    });
-
+    video.addEventListener("loadedmetadata", () => {});
   };
   const { isSubmitting, isValid } = form.formState;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -102,7 +99,6 @@ export const ChapterVedioForm = ({
               if (url) {
                 console.log(url);
                 getThevideoDurationFromtheUrl(url);
-
 
                 onSubmit({ videoUrl: url });
               }

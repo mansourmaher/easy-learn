@@ -3,18 +3,21 @@
 import { cn } from "@/lib/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { IconType } from "react-icons";
-import qs from "query-string";
-import {
-  FcEngineering,
-  FcFilmReel,
-  FcMultipleDevices,
-  FcMusic,
-  FcOldTimeCamera,
-  FcSportsMode,
-  FcSalesPerformance,
-} from "react-icons/fc";
+
 import { Category } from "@prisma/client";
 import IconComponent from "@/app/(dashboard)/(routes)/search/_components/icon-components";
+
+import {
+  FcBusiness,
+  FcCalculator,
+  FcCamera,
+  FcBiotech,
+  FcCurrencyExchange,
+  FcDepartment,
+  FcIdea,
+  FcTimeline,
+  FcReading,
+} from "react-icons/fc";
 
 interface CategoryItemProps {
   label: string;
@@ -30,15 +33,15 @@ export const CategoryItemforComunty = ({
   value,
 }: CategoryItemProps) => {
   const iconsMap: Record<Category["name"], IconType> = {
-    "Computer Science": FcMultipleDevices,
-    Mathematics: FcEngineering,
-    Physics: FcOldTimeCamera,
-    Chemistry: FcSalesPerformance,
-    Biology: FcSportsMode,
-    Economics: FcFilmReel,
-    Business: FcSalesPerformance,
-    Psychology: FcMusic,
-    History: FcOldTimeCamera,
+    "Computer Science": FcIdea, // Represents innovation and ideas
+    Mathematics: FcCalculator, // Represents calculations and math
+    Physics: FcTimeline, // Represents concepts in physics
+    Chemistry: FcBusiness, // Represents business and chemistry
+    Biology: FcBiotech, // Represents biological science
+    Economics: FcCurrencyExchange, // Represents economics and currency
+    Business: FcDepartment, // Represents a business department
+    Psychology: FcReading, // Represents studying and psychology
+    History: FcCamera,
   };
   const pathname = usePathname();
   const comunityIdInthepathname = pathname.split("/")[2];

@@ -1,4 +1,4 @@
-import { Cloud, Files, UploadCloud } from "lucide-react";
+import { Cloud, File, Files, UploadCloud } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
 
@@ -66,29 +66,21 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
                   <p className="text-sm text-gray-500">
                     Drag and drop your file here or{" "}
                     <span className="text-primary">browse</span>
+                    <p className="text-primary">Only .pdf files are allowed</p>
                   </p>
                 </div>
+                {error && <p className="text-red-500">Error uploading file</p>}
                 {acceptedFiles && acceptedFiles[0] && !error ? (
                   <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outiline outline-[1px] outline-primary">
                     <div className="px-3 py-2 h-4 flex flex-row place-items-center">
-                      <Files className="h-4 w-4 text-primary" />
+                      <File className="h-4 w-4 text-primary" />
                     </div>
                     <div className="px-3 py-2 h-full text-sm truncate">
                       {acceptedFiles[0].name}
                     </div>
                   </div>
                 ) : null}
-                {error ? (
-                  <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outiline outline-[1px] outline-primary">
-                    <div className="px-3 py-2 h-4 flex flex-row place-items-center">
-                      <Files className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="px-3 py-2 h-full text-sm truncate text-red-500">
-                      Error uploading file
-                    </div>
-                  </div>
-                ) : null}
-                {isUploading ? (
+                {isUploading && !error ? (
                   <div className="w-full mt-4 max-w-xs mx-auto ">
                     <Progress
                       value={uploadProgress}
@@ -98,10 +90,12 @@ const UploadDropzone = ({ file, onchange }: AccesTeacherProps) => {
                       )}
                     />
                     <span className="items-center justify-center flex mt-2 text-gray-500">
-                      {uploadProgress === 100 && processing  && !error && (
+                      {uploadProgress === 100 && processing && !error ? (
                         <div className=" flex gap-x-2">
                           <p>Uploading</p>
                         </div>
+                      ) : (
+                        <p>{uploadProgress}% </p>
                       )}
                     </span>
                   </div>

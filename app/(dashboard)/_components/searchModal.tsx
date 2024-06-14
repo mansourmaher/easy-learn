@@ -67,8 +67,10 @@ export default function SearchModal({ courses, teacher }: SearchModalProps) {
         <DialogHeader>
           <DialogTitle>Browse Courses and Teachers</DialogTitle>
           <DialogDescription>
-            Here you can filter courses by name <br></br>
-            also you can search it by teacher name
+            <span>
+              Looking for a specific course or teacher? Use the search bar to
+              find what you're looking for.
+            </span>
           </DialogDescription>
         </DialogHeader>
 

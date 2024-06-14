@@ -211,7 +211,7 @@ export function SetUpAccountForm() {
       optionSelected: optionSelected as string,
       imageUrl: imageUrl as string,
       country: origin as CountrySelectValue,
-      about: about as string,
+      about: setUpAccountForm.getValues("bio"),
       subtitle: subtitle as string,
       patients: patiants as string[],
       linkedin: linkedin as string,
@@ -251,7 +251,9 @@ export function SetUpAccountForm() {
                   aria-current="step"
                 >
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-400 transition-colors group-hover:bg-primary/80">
-                    {step.icon && <step.icon className="h-4 w-4 text-white bg-blue-400" />}
+                    {step.icon && (
+                      <step.icon className="h-4 w-4 text-white bg-blue-400" />
+                    )}
                   </div>
 
                   <div className="flex flex-1 flex-col md:ml-4">
@@ -404,9 +406,7 @@ export function SetUpAccountForm() {
                     <div>
                       <div className="flex items-center justify-between gap-x-3">
                         <div className="flex-1 items-center">
-                          <Label>
-                            Skills
-                          </Label>
+                          <Label>Skills</Label>
                           <Input
                             placeholder=""
                             value={patient}

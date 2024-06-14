@@ -31,7 +31,7 @@ export default function ChapterReport({
     }
   }, [workUrl]);
   const handelremovereport = async (id: string) => {
-    await removeReportChapter(id,courseId);
+    await removeReportChapter(id, courseId);
     router.refresh();
   };
   return (

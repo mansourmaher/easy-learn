@@ -5,6 +5,7 @@ import {
   markfreechapterInUnpurchasedCourseasComplete,
 } from "@/actions/Etudiant/mark-asComplete";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import React from "react";
@@ -30,10 +31,8 @@ export default function MarkAsCompleteButton({
   const router = useRouter();
   const onclick = async (chapterId: string) => {
     if (!isPurchased) {
-      await markfreechapterInUnpurchasedCourseasComplete(chapterId, courseId);
-      toast.success("Chapter marked as complete");
-      window.location.reload();
-      router.refresh();
+      const response = await axios.post(`/api/courses/${courseId}/checkout`);
+      window.location.assign(response.data.url);
       return;
     }
     await markAsComplete(chapterId, courseId);

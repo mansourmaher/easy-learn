@@ -78,8 +78,12 @@ export async function POST(req:Request)
                 notification
             });
             revalidatePath('teacher/check')
-            return  Response.json({message:"Work submitted you studnet will be notified"}, { status: 200 });
-    }catch(e)
+            return Response.json({message: "The student's work has been successfully submitted. They have been notified."}, { status: 200 });
+
+
+
+
+        }catch(e)
     {
         return  Response.json({message:"Error submitting work"}, { status: 500 });
     }

@@ -4,9 +4,12 @@ import { auth } from "@/auth";
 import { db } from "@/lib/db";
 
 export async function getLevelDistinctCount() {
+  const user = await auth();
+  const userId = user?.user.id;
   const intermidarecoursecount = await db.courseUser.count({
     where: {
       course: {
+        userId: userId,
         level: "Intermediate",
       },
     },
@@ -14,6 +17,7 @@ export async function getLevelDistinctCount() {
   const beginnercoursecount = await db.courseUser.count({
     where: {
       course: {
+        userId: userId,
         level: "Beginner",
       },
     },
@@ -21,6 +25,7 @@ export async function getLevelDistinctCount() {
   const advancedcoursecount = await db.courseUser.count({
     where: {
       course: {
+        userId: userId,
         level: "Advanced",
       },
     },

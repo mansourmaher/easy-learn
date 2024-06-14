@@ -16,7 +16,7 @@ const LayoutPage = async ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="h-full">
+    <div className="max-h-screen">
       <TeacherNavbar />
       <div className="h-full">{children}</div>
     </div>

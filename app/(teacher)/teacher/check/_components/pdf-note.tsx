@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Loader2 } from "lucide-react";
+import { Loader, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -44,9 +44,7 @@ export default function PdfNote({ id }: FormProps) {
   const [grade, setGrade] = useState(0);
   const [souldBerefresh, setSouldBerefresh] = useState(false);
   const [initilagrade, setInitilagrade] = useState(0);
-  const router=useRouter()
-
-  
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,20 +62,18 @@ export default function PdfNote({ id }: FormProps) {
   }, [id, souldBerefresh]);
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-   
     await axios
       .post("/api/teacher/keepNote", {
         reportId: id,
         grade: values.grade,
         note: values.note,
         initilagrade: initilagrade,
-        
       })
       .then((res) => {
         setSuccessMessage(res.data.message);
         setSouldBerefresh(!souldBerefresh);
       });
-      router.refresh()
+    router.refresh();
   };
   return (
     <Dialog
@@ -160,7 +156,7 @@ export default function PdfNote({ id }: FormProps) {
                 //put it in the right
               >
                 {form.formState.isSubmitting ? (
-                  <Loader2 className="w-6 h-6 animate-spin" />
+                  <Loader className="w-6 h-6 animate-spin" />
                 ) : (
                   "Save"
                 )}

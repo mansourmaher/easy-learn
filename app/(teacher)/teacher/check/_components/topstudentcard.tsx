@@ -41,12 +41,6 @@ function TopstudentCard({ topstudent }: TopstudentCardProps) {
               <p className="text-sm text-muted-foreground">{student.email}</p>
             </div>
             <div className="ml-auto font-medium flex flex-col gap-y-2">
-              <span className="text-sm text-muted-foreground flex gap-x-1">
-                <span>Score:</span>{" "}
-                <span className="text-semibold text-black">
-                  {student.score}
-                </span>
-              </span>
               <span>
                 <Badge className="bg-sky-500 text-white">
                   {student.course}
