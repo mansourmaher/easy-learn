@@ -397,7 +397,7 @@ export function SetUpAccountForm() {
                 </div>
 
                 <div className="mt-2 sm:col-span-3">
-                  <Label>Field of Study (Filier)</Label>
+                  <Label>Field of Study </Label>
                   <Select
                     options={filierOptions}
                     placeholder="Select your filier"

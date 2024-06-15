@@ -26,6 +26,7 @@ import SearchModalTrigger from "./searchModlatrigger";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Secondsidbar } from "./secondMobilesidebar";
 import { MobileSidebar } from "./mobilesidebar";
+import { FcDataConfiguration } from "react-icons/fc";
 
 const StudentNavbar = async () => {
   const notifs = await getAllNotifications();
@@ -127,7 +128,8 @@ const StudentNavbar = async () => {
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer">
-              <Link href="/setup-account">Profile</Link>
+              <Link href="/setup-account">Setup Account</Link>
+              <FcDataConfiguration className="w-5 h-5" />
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             {isverifiedteacher && (

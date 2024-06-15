@@ -23,6 +23,7 @@ import { getteacherfirstconversation } from "@/actions/conversation/getteacherfi
 import LogoutBtn from "@/app/(dashboard)/_components/logoutbtn";
 import StudetnBtn from "./studentbtn";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { FcDataConfiguration } from "react-icons/fc";
 
 const TeacherNavbar = async () => {
   const notifs = await getAllNotifications();
@@ -141,8 +142,11 @@ const TeacherNavbar = async () => {
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {/* <UserButton /> */}
-            <DropdownMenuItem>
-              <Link href="/teacher/setup-account">Profile</Link>
+            <DropdownMenuItem className="cursor-pointer flex" asChild>
+              <Link href="/teacher/setup-account">
+                Setup Account
+                <FcDataConfiguration className="w-5 h-5" />
+              </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <StudetnBtn />
