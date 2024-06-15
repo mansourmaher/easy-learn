@@ -102,7 +102,9 @@ export async function getAllteachers({teacher,country,field,orderby}:GetTeacher)
                 subtitle:true,
                 email: true,
                 createdAt:true,
-                about:true
+                about:true,
+                origin:true,
+                
             }
         })
         
@@ -145,7 +147,8 @@ export async function getAllteachers({teacher,country,field,orderby}:GetTeacher)
                 subtitle:true,
                 email: true,
                 createdAt:true,
-                about:true
+                about:true,
+                origin:true,
             }
         })
         
@@ -188,7 +191,8 @@ export async function getAllteachers({teacher,country,field,orderby}:GetTeacher)
                 subtitle:true,
                 email: true,
                 createdAt:true,
-                about:true
+                about:true,
+                origin:true,
             },
             orderBy:{
                 createdAt:"asc"

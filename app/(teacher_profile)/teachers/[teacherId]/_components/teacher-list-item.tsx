@@ -1,8 +1,4 @@
 "use client";
-import {
-  getAllUnstroctor,
-  getAllteachers,
-} from "@/actions/teacher/get-all-unstroctor";
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Star } from "lucide-react";

@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import useCountries from "@/hooks/useCountries";
 import Select from "react-select";
 import filiers from "@/data/filiers";
+
 function Cardfilter() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -50,11 +51,12 @@ function Cardfilter() {
     );
     router.push(url);
   }, [intialecountry, intialefield, intialeorderby]);
+
   return (
     <>
-      <Card className="rounded-3xl border  bg-muted/40 md:w-[1190px] place-content-center md:ml-48 mb-8">
-        <div className="flex justify-between  mr-2 p-4">
-          <div className="flex justify-between items-center ">
+      <Card className="rounded-3xl border bg-muted/40 md:w-[1210px] mb-8">
+        <div className="flex justify-between mr-2 p-4">
+          <div className="flex justify-between items-center">
             <div className="flex text-sm text-muted-foreground justify-between items-center">
               <span>
                 There are teachers available for you ordered by rating apply
@@ -79,8 +81,8 @@ function Cardfilter() {
           transition={{ duration: 0.3 }}
           className="w-full h-full"
         >
-          <Card className="rounded-3xl border md:w-[1190px] place-content-center md:ml-48 mb-8">
-            <div className="flex justify-between mr-2 p-4 space-x-10">
+          <Card className="rounded-3xl border md:w-[1210px] mb-8">
+            <div className="flex flex-col md:flex-row items-center md:space-x-10 space-y-4 md:space-y-0 mr-2 p-4">
               <div className="w-full flex items-center space-x-2">
                 <span className="text-muted-foreground">Country</span>
                 <Select
@@ -119,7 +121,7 @@ function Cardfilter() {
                 <span className="text-muted-foreground">Order by</span>
                 <Select
                   options={orderbyOptions}
-                  className="w-1/2"
+                  className="w-full"
                   value={orderbyOptions.find(
                     (c) => c.option === intialeorderby
                   )}

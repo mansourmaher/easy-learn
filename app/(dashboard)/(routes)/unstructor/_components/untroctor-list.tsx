@@ -15,11 +15,13 @@ interface UntroctorListProps {
 
 export default function UntroctorList({ teachers }: UntroctorListProps) {
   return (
-    <div>
+    <div className="">
       {/* <Cardfilter /> */}
-      <Cardfilter />
+      <div className="grid place-content-center">
+        <Cardfilter />
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[580px_580px] gap-8 place-content-center">
+      <div className="grid grid-cols-1 md:grid-cols-[600px_600px] gap-8 place-content-center">
         {teachers?.map((teacher, index) => (
           <div key={index}>
             <SecondTeacherCard teachers={teacher} index={index} />

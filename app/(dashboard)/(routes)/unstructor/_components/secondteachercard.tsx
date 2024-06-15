@@ -1,14 +1,12 @@
-import {
-  getAllUnstroctor,
-  getAllteachers,
-} from "@/actions/teacher/get-all-unstroctor";
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { format } from "date-fns";
 import { Star } from "lucide-react";
-import React from "react";
 import ContinueToprofileBtn from "./continuetoprofilebtn";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 
 interface UnstroctorCardProps {
   teachers: any;
@@ -16,6 +14,16 @@ interface UnstroctorCardProps {
 }
 
 function SecondTeacherCard({ teachers, index }: UnstroctorCardProps) {
+  // the map is located here c:/Users/HP/Desktop/PFE/lms-app-2/components/Map
+
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("@/components/Map"), {
+        loading: () => <p>loading...</p>,
+        ssr: false,
+      }),
+    [teachers?.origin?.lalng]
+  );
   return (
     <Card className="rounded-3xl border  bg-muted/40">
       <CardContent>
@@ -54,7 +62,7 @@ function SecondTeacherCard({ teachers, index }: UnstroctorCardProps) {
           </div>
           <ContinueToprofileBtn id={teachers.id} />
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col mt-4 ">
           <div className="bg-gray-200 p-2 rounded-xl flex space-x-1 justify-between">
             {teachers?.avg ? (
               <Badge variant={"yellow"} className="flex space-x-1 p-2">
@@ -77,6 +85,9 @@ function SecondTeacherCard({ teachers, index }: UnstroctorCardProps) {
             <Badge variant={"slate"} className="flex space-x-1 p-2">
               {teachers.totlacourse} courses
             </Badge>
+          </div>
+          <div className="mt-8">
+            <Map center={teachers?.origin?.lalng} />
           </div>
         </div>
       </CardContent>
