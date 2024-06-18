@@ -3,12 +3,13 @@ import Image from "next/image";
 export const Logo = () => {
   return (
     <Image
-      src="/logo.svg"
+      src="/logooftheapplication.png"
       alt="logo"
-      width={200}
-      height={200}
+      width={10}
+      height={10}
       layout="responsive"
       loading="lazy"
+      className="rounded-full"
     />
   );
 };

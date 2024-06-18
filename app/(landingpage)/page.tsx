@@ -14,7 +14,9 @@ function Page() {
           aria-label="Global"
         >
           <div className="flex items-center justify-between ">
-            <Logo />
+            <div className="w-[190px]">
+              <Logo />
+            </div>
           </div>
 
           <div>
